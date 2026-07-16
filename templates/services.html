@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Services | {{ config.SITE_NAME }}{% endblock %}
+{% block meta_description %}Explore Europack's services: design and engineering assessment, spare parts and technical support, periodic inspection and maintenance, and innovation and upgrades.{% endblock %}
+{% block content %}
+{% with page_title = "Services" %}{% include "components/breadcrumb.html" %}{% endwith %}
+
+<section class="service-details-wrapper pt-130 mb-130">
+  <div class="container-fluid one pl--95">
+    <div class="service-details-advantage">
+      <div class="row g-lg-4 gy-5">
+        <div class="col-lg-7">
+          <div class="advantage-content">
+            <div class="gap-lg-5 gap-4 d-flex flex-lg-nowrap flex-wrap align-items-end justify-content-between mb-60">
+              <div class="section-title1 two">
+                <span>Why Europack?</span>
+                <h2>Your trusted partner for smart, sustainable, and high-performance packaging and production solutions</h2>
+              </div>
+            </div>
+            <h3 class="mb-30">What sets us apart:</h3>
+            <div class="advantage-content-bottom">
+              <ul>
+                <li>Solutions tailored to your needs</li>
+                <li>Proven industry expertise</li>
+                <li>High-speed performance</li>
+                <li>Sustainable packaging focus</li>
+                <li>Compact, smart solutions</li>
+                <li>End-to-end support</li>
+                <li>Reliable after-sales care</li>
+                <li>European quality standards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 d-flex align-items-end">
+          <div class="advantage-img">
+            <img class="img-fluid" src="{{ url_for('static', filename='images/site/xray-inspection.png') }}" alt="Europack inspection equipment">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-page pt-130 pb-130">
+  <div class="container-fluid one pl--95">
+    <div class="row">
+      <div class="col-lg-3 d-lg-flex d-none">
+        <div class="faq-img">
+          <img class="img-fluid" src="{{ url_for('static', filename='images/site/facility-team.jpg') }}" alt="Europack facility">
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="faq-wrap">
+          <div class="faq-title mb-40 ps-3 ps-sm-0">
+            <span>Services</span>
+            <h2>Together we design the future of industrial solutions</h2>
+          </div>
+          <div class="accordion" id="servicesAccordion">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#svc1">DESIGN &amp; ENGINEERING ASSESSMENT</button>
+              </div>
+              <div id="svc1" class="accordion-collapse collapse show" data-bs-parent="#servicesAccordion">
+                <div class="accordion-cont d-flex align-items-end flex-wrap">
+                  <p>Europack offers comprehensive production space design solutions and packaging and inspection line studies, ensuring ergonomics, efficiency, and compliance with modern requirements. From selecting the right equipment to optimising facility layout, we provide specialised recommendations for optimal performance.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc2">SPARE PARTS &amp; TECHNICAL SUPPORT</button>
+              </div>
+              <div id="svc2" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                <div class="accordion-cont d-flex align-items-end flex-wrap">
+                  <p>Europack provides organised handling of spare parts management and technical support to ensure your machinery's smooth operation. We monitor the needs of each installation and guarantee the immediate availability of critical components, with high-level support for equipment from leading manufacturers such as SIG Group, CEIA, Ishida, Endoline, and Probat.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc3">PERIODIC INSPECTION &amp; MAINTENANCE</button>
+              </div>
+              <div id="svc3" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                <div class="accordion-cont d-flex align-items-end flex-wrap">
+                  <p>We provide regular inspection and maintenance services with a strong focus on metal detectors and X-rays. Our services ensure continuous compliance with quality standards and include certification essential for audits and regulatory inspections, guaranteeing the reliability of your production process.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc4">INNOVATION &amp; UPGRADES</button>
+              </div>
+              <div id="svc4" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                <div class="accordion-cont d-flex align-items-end flex-wrap">
+                  <p>Through targeted visits to international exhibitions, Europack I.S. keeps clients continuously informed of the latest industry developments, and organises visits to manufacturers for hands-on experience and training. Integrating the latest technological advances, we upgrade your existing equipment for increased performance, long-term sustainability, and compliance with new requirements.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "components/cta.html" %}
+{% endblock %}

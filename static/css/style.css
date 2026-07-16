@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Europack (Flask) — thin override layer on top of the real europack.gr
+   theme stylesheets (bootscore / bootscore-child), linked directly in
+   base.html. Only Flask-specific bits that the WP theme doesn't style
+   live here: flash messages, form validation errors, and the CF7-style
+   form markup rendered by Flask-WTF.
+   ========================================================================== */
+
+/* Flash messages ---------------------------------------------------------*/
+.flash-container { position: fixed; top: 100px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; }
+.flash-message {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 20px; border-radius: 8px; color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); min-width: 260px;
+}
+.flash-success { background: #1aa37a; }
+.flash-danger { background: #d64545; }
+.flash-close { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
+
+/* Form validation errors (Flask-WTF) --------------------------------------*/
+.form-error { color: #d64545; font-size: 0.85rem; display: block; margin-top: 4px; }
+
+/* Contact directory blocks on the contact page ----------------------------*/
+.single-location ul { list-style: none; padding: 0; margin: 0; }
+.single-location ul li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+
+/* Error pages --------------------------------------------------------------*/
+.error-section { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0; }

@@ -1,0 +1,67 @@
+<footer>
+  <div class="container-fluid one">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 pl--95 mb-100 pr--95">
+        <div class="footer-top">
+          <div class="row g-lg-4 gy-5 justify-content-center">
+            <div class="col-md-3 d-flex justify-content-md-center">
+              <div class="footer-widget">
+                <div class="widget-title"><h3>Useful Links</h3></div>
+                <div class="menu-container">
+                  <ul>
+                    <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('main.about') }}">The Company</a></li>
+                    <li><a href="{{ url_for('main.services') }}">Services</a></li>
+                    <li><a href="{{ url_for('main.news') }}">News</a></li>
+                    <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 d-flex justify-content-md-center">
+              <div class="footer-widget">
+                <div class="widget-title"><h3>Agencies</h3></div>
+                <div class="menu-container">
+                  <ul>
+                    <li><a href="{{ url_for('main.products') }}">Product Manufacturing and Packaging lines</a></li>
+                    <li><a href="{{ url_for('main.quality_control') }}">Quality control</a></li>
+                    <li><a href="{{ url_for('main.supply_chain') }}">Supply Chain</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex justify-content-md-center">
+              <div class="footer-widget">
+                <div class="widget-title"><h3>Information</h3></div>
+                <div class="menu-container">
+                  <ul>
+                    <li><a href="#">Privacy &amp; Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="footer-menu-wrap">
+          <div class="footer-logo">
+            <a href="{{ url_for('main.index') }}">
+              <img class="img-fluid" src="https://europack.gr/wp-content/uploads/2025/06/Main.Europack-Logo_New_white-2.png" alt="{{ config.SITE_NAME }}">
+            </a>
+          </div>
+        </div>
+        <div class="footer-btm">
+          <div class="copyright-area">
+            <p>&copy;Copyright {{ 2026 }} {{ config.SITE_NAME }} | Created By <a href="https://www.ads-solutions.gr/" target="_blank" rel="noopener">ADS Solutions</a></p>
+          </div>
+          <ul class="social-area">
+            <li><a href="https://www.linkedin.com/company/europack-industrial-solutions-sa/" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i><h2 class="d-none">linkedin</h2></a></li>
+            <li><a href="https://x.com/europack_is" target="_blank" rel="noopener"><i class="bx bxl-twitter"></i><h2 class="d-none">x</h2></a></li>
+            <li><a href="https://www.youtube.com/@europackis6591" target="_blank" rel="noopener"><i class="bx bxl-youtube"></i><h2 class="d-none">youtube</h2></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

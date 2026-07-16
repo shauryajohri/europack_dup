@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Product Manufacturing & Packaging Lines | {{ config.SITE_NAME }}{% endblock %}
+{% block meta_description %}Europack represents international manufacturers of product manufacturing and packaging line equipment for the food, coffee, and pharmaceutical industries.{% endblock %}
+{% block content %}
+{% with page_title = "Product Manufacturing & Packaging lines" %}{% include "components/breadcrumb.html" %}{% endwith %}
+
+<section id="filters" class="pt-130 px-sm-0 px-5">
+  <div class="container">
+    <ul class="filter-wrapper gap-md-5 gap-3 my-50 flex-sm-row flex-column flex-wrap align-items-start">
+      <li class="button active">All Categories</li>
+      <li class="button">Consumables</li>
+      <li class="button">Food industry</li>
+      <li class="button">Coffee production</li>
+      <li class="button">Pharmaceutical industry</li>
+    </ul>
+  </div>
+</section>
+
+{% include "components/brand_grid.html" %}
+{% include "components/cta.html" %}
+{% endblock %}

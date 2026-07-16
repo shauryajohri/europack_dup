@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>{% block title %}{{ config.SITE_NAME }} | Industrial Packaging Equipment{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Europack has been supporting the manufacturing industry in Greece since 1972 with industrial production and packaging equipment.{% endblock %}">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="{{ config.SITE_NAME }} | {{ config.SITE_TAGLINE }}">
+  <meta property="og:description" content="Supply, design and support of industrial production and packaging equipment since 1972.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://europack.gr/wp-content/uploads/2025/06/europack_logo-1200x675-1.png">
+
+  <!-- Europack's real theme stylesheet stack (europack.gr / bootscore + bootscore-child) -->
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore/style.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/main.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/all.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/animate.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/aos.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/nice-select.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/slick.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/slick-theme.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/theme.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/style.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore/assets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/views/sections/hero/hero.css">
+
+  <!-- Our own overrides (small, only fills gaps for Flask-specific bits) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body id="body" class="wp-singular page">
+  {% include "navbar.html" %}
+
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}" role="alert">
+              <span>{{ message }}</span>
+              <button type="button" class="flash-close" aria-label="Close">&times;</button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "footer.html" %}
+
+  <!-- Europack's real theme script stack, in their original load order -->
+  <script src="https://europack.gr/wp-includes/js/jquery/jquery.min.js"></script>
+  <script src="https://europack.gr/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+  <script src="https://europack.gr/wp-includes/js/jquery/ui/core.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/aos.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/gsap.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/ScrollTrigger.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/TweenMax.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/isotope.pkgd.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/npmcdn.com_imagesloaded@4.1.4_imagesloaded.pkgd.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/jquery.counterup.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/jquery.fancybox.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/jquery.lineProgressbar.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/jquery.marquee.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/jquery.nice-select.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/particles.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/popper.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/progressbar.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/simpleParallax.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/slick.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/SmoothScroll.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/swiper-bundle.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/waypoints.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/custom.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/theme.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore-child/assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://europack.gr/wp-content/themes/bootscore/assets/js/theme.js"></script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

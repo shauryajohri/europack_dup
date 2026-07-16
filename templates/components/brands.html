@@ -1,0 +1,72 @@
+<section class="portfolio-section">
+  <div class="container-fluid one">
+    <div class="row">
+      <div class="col-lg-12 pl--95 mb-60">
+        <div class="portfolio-tab-area">
+          <div class="section-title1 two white">
+            <span>Αντιπροσωπείες</span>
+            <h2>Reliable quality!</h2>
+          </div>
+          <div class="d-flex flex-lg-row flex-wrap flex-column gap-3">
+            <a class="primary-btn4 btn-hover" href="{{ url_for('main.products') }}">
+              Product Manufacturing and Packaging lines
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+              <span></span>
+            </a>
+            <a class="primary-btn4 btn-hover" href="{{ url_for('main.quality_control') }}">
+              Quality control
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+              <span></span>
+            </a>
+            <a class="primary-btn4 btn-hover" href="{{ url_for('main.supply_chain') }}">
+              Supply Chain
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="portfolio-tab-content">
+          <div class="tab-content mb-60">
+            <div class="tab-pane fade show active">
+              <div class="col-lg-12">
+                <div class="swiper portfolio-slider">
+                  <div class="swiper-wrapper">
+                    {% for brand in brands %}
+                    <div class="swiper-slide">
+                      <div class="eg-card4">
+                        <div class="card-img">
+                          <a href="{{ brand.link }}" target="_blank" rel="noopener">
+                            <img src="{{ brand.img }}" alt="{{ brand.name }}">
+                          </a>
+                        </div>
+                        <div class="card-content">
+                          <div class="title-and-btn">
+                            <h4><a href="{{ brand.link }}" target="_blank" rel="noopener">{{ brand.name }}</a></h4>
+                            <a class="explore-btn" href="{{ brand.link }}" target="_blank" rel="noopener">
+                              Explore More
+                              <svg height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10.1865 1.06237L0 11.2484L0.751627 12L10.9376 1.81347V8.85645H12V0H3.14355V1.06237H10.1865Z" fill-rule="evenodd"></path></svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scrollbar-and-slider-btn d-flex align-items-center justify-content-between mt-4">
+            <div class="progress-pagination swiper-pagination-progressbar swiper-pagination-horizontal"></div>
+            <div class="slider-btn-group w-100">
+              <div class="slider-btn prev-4"></div>
+              <div class="slider-btn next-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

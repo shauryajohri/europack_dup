@@ -1,0 +1,51 @@
+<div class="header-topbar-area">
+  <div class="topbar-area style-2 two justify-content-lg-end pe-0">
+    <ul class="topbar-right mb-0">
+      <li><a href="mailto:{{ config.CONTACT_EMAIL }}"><i class="bi bi-envelope"></i> {{ config.CONTACT_EMAIL }}</a></li>
+      <li><a href="tel:+302109607102"><i class="bi bi-telephone"></i> {{ config.CONTACT_PHONE }}</a></li>
+    </ul>
+  </div>
+  <header class="header-area style-2 two position-relative">
+    <div class="header-logo d-flex">
+      <a href="{{ url_for('main.index') }}">
+        <img class="img-fluid" src="https://europack.gr/wp-content/uploads/2025/07/Plain.Europack.Logo_.white_.png" alt="{{ config.SITE_NAME }}">
+      </a>
+    </div>
+    <div class="menu-wrap">
+      <div class="main-menu">
+        <div class="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
+          <div class="mobile-logo-wrap">
+            <a href="{{ url_for('main.index') }}">
+              <img class="img-fluid" src="https://europack.gr/wp-content/uploads/2025/07/Plain.Europack.Logo_.white_.png" alt="{{ config.SITE_NAME }}">
+            </a>
+          </div>
+          <button class="navbar-toggle-btn d-lg-none" id="navbarToggle" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+        <div class="menu-logo">
+          <ul class="menu-list">
+            <li><a href="{{ url_for('main.about') }}">COMPANY</a></li>
+            <li><a href="{{ url_for('main.services') }}">SERVICES</a></li>
+            <li class="menu-item-has-children">
+              <a class="drop-down" href="#">AGENCIES</a>
+              <i class="bi bi-plus dropdown-icon"></i>
+              <ul class="sub-menu">
+                <li><a href="{{ url_for('main.products') }}">Product Manufacturing and Packaging lines</a></li>
+                <li><a href="{{ url_for('main.quality_control') }}">Quality control</a></li>
+                <li><a href="{{ url_for('main.supply_chain') }}">Supply Chain</a></li>
+              </ul>
+            </li>
+            <li><a href="{{ url_for('main.news') }}">NEWS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="header-right d-none d-lg-flex align-items-center">
+      <a class="primary-btn3 btn-hover" href="{{ url_for('main.contact') }}">
+        CONTACT
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+      </a>
+    </div>
+  </header>
+</div>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Supply Chain | {{ config.SITE_NAME }}{% endblock %}
+{% block meta_description %}Europack represents supply chain and factory protection equipment, including impact protection for factory premises from moving masses, through partners such as Stommpy.{% endblock %}
+{% block content %}
+{% with page_title = "Supply Chain" %}{% include "components/breadcrumb.html" %}{% endwith %}
+
+<div class="portfolio-two-column-section pt-5">
+  <div class="container">
+    <p class="lead">Protections for factory premises against impacts from moving masses</p>
+    <img class="img-fluid rounded mb-4" src="{{ url_for('static', filename='images/site/warehouse-barriers.png') }}" alt="Factory safety barriers" style="max-height:380px; object-fit:cover; width:100%;">
+  </div>
+</div>
+
+{% include "components/brand_grid.html" %}
+{% include "components/cta.html" %}
+{% endblock %}

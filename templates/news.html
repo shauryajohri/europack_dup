@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}News | {{ config.SITE_NAME }}{% endblock %}
+{% block meta_description %}Latest news from Europack: exhibitions, new partnerships, and industry insights.{% endblock %}
+{% block content %}
+{% with page_title = "News" %}{% include "components/breadcrumb.html" %}{% endwith %}
+
+<div class="portfolio-two-column-section pt-130 mb-130">
+  <div class="container">
+    <div class="row g-md-4 gy-5 mb-70">
+      {% for item in news_items %}
+      <div class="col-md-6">
+        <div class="eg-card4">
+          <div class="card-img">
+            <a href="{{ item.link }}" target="_blank" rel="noopener">
+              <img src="{{ item.img }}" alt="{{ item.title }}">
+            </a>
+          </div>
+          <div class="card-content">
+            <div class="title-and-btn">
+              <h4><a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.title }}</a></h4>
+              <a class="explore-btn" href="{{ item.link }}" target="_blank" rel="noopener">
+                Read More
+                <svg height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10.1865 1.06237L0 11.2484L0.751627 12L10.9376 1.81347V8.85645H12V0H3.14355V1.06237H10.1865Z" fill-rule="evenodd"></path></svg>
+              </a>
+            </div>
+            <p>{{ item.excerpt }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% include "components/cta.html" %}
+{% endblock %}
