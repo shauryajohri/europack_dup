@@ -1,7 +1,14 @@
 """Primary site routes: home, about, services, products, contact."""
 from flask import Blueprint, current_app, flash, redirect, render_template, url_for
 
-from data.site_content import BRANDS, CONTACT_DIRECTORY, NEWS, TEAM, brands_by_category
+from data.site_content import (
+    BRANDS,
+    CONTACT_DIRECTORY,
+    NEWS,
+    PARTNERS,
+    TEAM,
+    brands_by_category,
+)
 from forms.contact_form import ContactForm
 from forms.newsletter_form import NewsletterForm
 from models import db
@@ -34,6 +41,7 @@ def about():
         "about.html",
         newsletter_form=newsletter_form,
         team=TEAM,
+        partners=PARTNERS,
         gallery_images=GALLERY_IMAGES,
     )
 
@@ -42,7 +50,12 @@ def about():
 def services():
     """Render the Services page."""
     newsletter_form = NewsletterForm()
-    return render_template("services.html", newsletter_form=newsletter_form)
+    return render_template(
+        "services.html",
+        newsletter_form=newsletter_form,
+        form=ContactForm(),
+        news_items=NEWS[:4],
+    )
 
 
 @main.route("/products")

@@ -26,3 +26,49 @@
 
 /* Error pages --------------------------------------------------------------*/
 .error-section { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0; }
+
+/* Home "About Us" counters + image ------------------------------------------
+   The live site's flex layout here (counters left, photo right, shrinking to
+   fit) is driven by a per-page inline <style> block WordPress injects, which
+   isn't something we can hotlink — only the theme's external stylesheets are
+   linked in base.html. Re-declare the layout explicitly and cap the image so
+   it can never render at its full intrinsic size and blow out the row. */
+.home3-about-section .counter-and-about-img {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+.home3-about-section .counter-and-about-img .counter-wrap {
+  flex: 0 1 auto;
+}
+.home3-about-section .counter-and-about-img img {
+  flex: 1 1 260px;
+  min-width: 0;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Same defensive cap for the equivalent photos on the About/Company page. */
+.why-choose-section .graph-chart img,
+.about-section2 .about-img img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Services cards (home + company page) --------------------------------------
+   Soft directional shadow on the left/bottom of each card for depth, and the
+   decorative corner graphic (spiral / dotted ring) swapped in for the old
+   arrow icon. These are purely decorative — static, not links or buttons. */
+.solution-section .eg-card-3 {
+  box-shadow: -10px 10px 30px rgba(20, 20, 20, 0.07);
+}
+.solution-section .eg-card-3 .sn-and-btn .decor-icon {
+  color: currentColor;
+  pointer-events: none;
+  user-select: none;
+}

@@ -103,5 +103,119 @@
   </div>
 </section>
 
+<section class="blog-section2 mt-130 mb-130">
+  <div class="container-fluid one">
+    <div class="row">
+      <div class="col-lg-12 pl--95 gap-lg-5 gap-4 d-flex flex-lg-nowrap flex-wrap align-items-end justify-content-between mb-60">
+        <div class="section-title1 two">
+          <span>Our News</span>
+          <h2>Our latest news and insights.</h2>
+        </div>
+        <a class="explore-btn two" href="{{ url_for('main.news') }}">
+          Explore More
+          <svg height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10.1865 1.06237L0 11.2484L0.751627 12L10.9376 1.81347V8.85645H12V0H3.14355V1.06237H10.1865Z" fill-rule="evenodd"></path></svg>
+          <span></span>
+        </a>
+      </div>
+      <div class="col-lg-12">
+        <div class="row g-4">
+          {% for item in news_items %}
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="blog-card2 two">
+              <div class="magnetic-wrap">
+                <div class="blog-img magnetic-item">
+                  <a href="{{ item.link }}" target="_blank" rel="noopener">
+                    <img src="{{ item.img }}" alt="{{ item.title }}">
+                  </a>
+                </div>
+              </div>
+              <div class="blog-content">
+                <ul class="tags">
+                  <li><a href="{{ url_for('main.news') }}">News</a></li>
+                </ul>
+                <h4><a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.title }}</a></h4>
+                <a class="explore-btn" href="{{ item.link }}" target="_blank" rel="noopener">
+                  Explore More
+                  <svg height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10.1865 1.06237L0 11.2484L0.751627 12L10.9376 1.81347V8.85645H12V0H3.14355V1.06237H10.1865Z" fill-rule="evenodd"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contect-section6 pb-130">
+  <div class="container-fluid one pl--95">
+    <div class="row g-lg-4 gy-5">
+      <div class="col-lg-5">
+        <div class="section-title1 two">
+          <h2>Area of Activity</h2>
+          <p class="pt-md-0 pt-3">Contact us!</p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="contact-form-area two">
+          <form class="wpcf7-form init" method="POST" action="{{ url_for('main.contact') }}" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="row">
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.name.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.name(class_="wpcf7-form-control wpcf7-text", placeholder="Name*") }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.email.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.email(class_="wpcf7-form-control wpcf7-email", placeholder="Email*") }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.subject.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.subject(class_="wpcf7-form-control wpcf7-text", placeholder="Company*") }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.phone.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.phone(class_="wpcf7-form-control wpcf7-text", placeholder="Telephone*") }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-12 mb-30">
+                <div class="form-inner">
+                  {{ form.message.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.message(class_="wpcf7-form-control wpcf7-textarea", rows=6, placeholder="Write us your message*") }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <button type="submit" class="primary-btn3 btn-hover">
+                  Submit
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% include "components/cta.html" %}
 {% endblock %}

@@ -10,7 +10,12 @@
   <meta property="og:title" content="{{ config.SITE_NAME }} | {{ config.SITE_TAGLINE }}">
   <meta property="og:description" content="Supply, design and support of industrial production and packaging equipment since 1972.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://europack.gr/wp-content/uploads/2025/06/europack_logo-1200x675-1.png">
+  <meta property="og:image" content="{{ url_for('static', filename='images/site/og-image.png', _external=True) }}">
+
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='icons/favicon.svg') }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='icons/favicon-96x96.png') }}">
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
 
   <!-- Europack's real theme stylesheet stack (europack.gr / bootscore + bootscore-child) -->
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore/style.css">
@@ -18,9 +23,13 @@
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/all.min.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/animate.min.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/aos.css">
-  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/boxicons.min.css">
-  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/fontawesome.min.css">
+  <!-- Icon font CSS self-hosted via CDN (not hotlinked from europack.gr) because
+       @font-face font files are subject to CORS: europack.gr doesn't send
+       cross-origin headers for its font files, so on any other origin (like
+       this local server) the icon glyphs silently render as empty boxes. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/magnific-popup.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/nice-select.css">
@@ -29,7 +38,6 @@
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/assets/css/theme.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/style.css">
-  <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore/assets/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="https://europack.gr/wp-content/themes/bootscore-child/views/sections/hero/hero.css">
 
   <!-- Our own overrides (small, only fills gaps for Flask-specific bits) -->

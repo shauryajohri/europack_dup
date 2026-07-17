@@ -1,37 +1,104 @@
 """Real content sourced from the live europack.gr site: represented brands,
-team members, news articles, and contact directory. Images are hotlinked to
-the client's own WordPress media library (europack.gr/wp-content/uploads/...).
+team members, news articles, and contact directory. Brand and site images are
+served locally from static/images/ (downloaded from the client's own
+WordPress media library at europack.gr/wp-content/uploads/...).
 """
 
 BRANDS = [
-    {"name": "All-Fill", "slug": "all-fill", "img": "https://europack.gr/wp-content/uploads/2025/06/thumbnail_all_fill-1.webp", "link": "https://europack.gr/en/antiprosopeia/all-fill/", "categories": ["food", "manufacturing"]},
-    {"name": "AluSense", "slug": "alu-sense", "img": "https://europack.gr/wp-content/uploads/2025/07/banner-5.png", "link": "https://europack.gr/en/antiprosopeia/alu-sense/", "categories": ["manufacturing", "coffee"]},
-    {"name": "CEIA", "slug": "ceia", "img": "/static/images/site/metal-detector-line.jpg", "link": "https://europack.gr/en/antiprosopeia/ceia/", "categories": ["food", "manufacturing", "quality"]},
-    {"name": "CEIA", "slug": "ceia-2", "img": "/static/images/site/portable-metal-detector.jpg", "link": "https://europack.gr/en/antiprosopeia/ceia-2/", "categories": ["manufacturing", "pharma"]},
-    {"name": "Claranor", "slug": "claranor", "img": "https://europack.gr/wp-content/uploads/2025/07/claranor-cup-sterilization-unit-300-dpi1-1200x675-1-e1753960926204.png", "link": "https://europack.gr/en/antiprosopeia/claranor/", "categories": ["food", "manufacturing", "pharma"]},
-    {"name": "Colombini", "slug": "colombini", "img": "https://europack.gr/wp-content/uploads/2025/07/MAC3_degassing_2024_02-scaled.jpg", "link": "https://europack.gr/en/antiprosopeia/colombini/", "categories": ["manufacturing", "coffee"]},
-    {"name": "Detectamet", "slug": "detectamet", "img": "/static/images/site/detectamet-product.jpg", "link": "https://europack.gr/en/antiprosopeia/detectamet/", "categories": ["consumables", "manufacturing"]},
-    {"name": "Econocorp", "slug": "econocorp", "img": "https://europack.gr/wp-content/uploads/2025/07/Econocorp.png", "link": "https://europack.gr/en/antiprosopeia/econocorp/", "categories": ["food", "manufacturing"]},
-    {"name": "Endoline", "slug": "endoline", "img": "/static/images/site/endoline-logo.png", "link": "https://europack.gr/en/antiprosopeia/endoline/", "categories": ["food", "manufacturing"]},
-    {"name": "Fette Compacting", "slug": "fette-compacting", "img": "https://europack.gr/wp-content/uploads/2025/07/Fette-Compacting.png", "link": "https://europack.gr/en/antiprosopeia/fette-compacting/", "categories": ["manufacturing", "pharma"]},
-    {"name": "GEYSSEL", "slug": "geyssel", "img": "https://europack.gr/wp-content/uploads/2025/07/applikator-457.jpg", "link": "https://europack.gr/en/antiprosopeia/geyssel/", "categories": ["food", "manufacturing"]},
-    {"name": "Glatt Group", "slug": "glatt-group", "img": "https://europack.gr/wp-content/uploads/2025/07/Granulation-line-scaled.jpg", "link": "https://europack.gr/en/antiprosopeia/glatt-group/", "categories": ["manufacturing", "pharma"]},
-    {"name": "Heat and Control", "slug": "heat-and-control", "img": "https://europack.gr/wp-content/uploads/2025/07/conveying_index.jpg", "link": "https://europack.gr/en/antiprosopeia/heat-and-control/", "categories": ["food", "manufacturing"]},
-    {"name": "IMA Ilapak", "slug": "ima-ilapak", "img": "https://europack.gr/wp-content/uploads/2025/06/FVFSK25_0001_VEGATRONIC-6000-DZ_Generale-_I23.jpg", "link": "https://europack.gr/en/antiprosopeia/ima-ilapak/", "categories": ["food", "manufacturing"]},
-    {"name": "Ishida", "slug": "ishida", "img": "/static/images/site/xray-inspection.png", "link": "https://europack.gr/en/antiprosopeia/ishida/", "categories": ["food", "manufacturing", "quality", "pharma"]},
-    {"name": "Mpac", "slug": "mpac", "img": "https://europack.gr/wp-content/uploads/2025/06/Cartoning-Maestro-c-hero.jpg", "link": "https://europack.gr/en/antiprosopeia/mpac/", "categories": ["food", "manufacturing"]},
-    {"name": "Oli", "slug": "oli", "img": "https://europack.gr/wp-content/uploads/2025/07/kartonverpackung_-1-e1753880388360.jpg", "link": "https://europack.gr/en/antiprosopeia/oli/", "categories": ["food", "manufacturing"]},
-    {"name": "Packline", "slug": "packline", "img": "https://europack.gr/wp-content/uploads/2025/07/hummus_pxm.jpg", "link": "https://europack.gr/en/antiprosopeia/packline/", "categories": ["food", "manufacturing"]},
-    {"name": "Pharma Technology", "slug": "pharma-technology", "img": "https://europack.gr/wp-content/uploads/2025/07/Pharma-Technolgy.png", "link": "https://europack.gr/en/antiprosopeia/pharma-technology/", "categories": ["manufacturing", "pharma"]},
-    {"name": "Probat", "slug": "probat", "img": "/static/images/site/probat-roasters.png", "link": "https://europack.gr/en/antiprosopeia/probat/", "categories": ["manufacturing", "coffee"]},
-    {"name": "SIG Group", "slug": "sig-group", "img": "/static/images/site/sig-facility.png", "link": "https://europack.gr/en/antiprosopeia/sig-group/", "categories": ["food", "manufacturing"]},
-    {"name": "Sollas", "slug": "sollas", "img": "https://europack.gr/wp-content/uploads/2025/07/Sollas.png", "link": "https://europack.gr/en/antiprosopeia/sollas/", "categories": ["food", "manufacturing"]},
-    {"name": "Supura", "slug": "supura", "img": "https://europack.gr/wp-content/uploads/2025/07/Supura.png", "link": "https://europack.gr/en/antiprosopeia/supura/", "categories": ["food", "manufacturing"]},
-    {"name": "Swiss Can Machinery", "slug": "swiss-can-machinery", "img": "https://europack.gr/wp-content/uploads/2025/07/lead.jpg", "link": "https://europack.gr/en/antiprosopeia/swiss-can-machinery/", "categories": ["food", "manufacturing"]},
-    {"name": "Tecma Aries", "slug": "tecma-aries", "img": "https://europack.gr/wp-content/uploads/2025/06/thumbnail_tecma_aries.webp", "link": "https://europack.gr/en/antiprosopeia/tecma-aries/", "categories": ["food", "manufacturing"]},
-    {"name": "Volpak", "slug": "volpak", "img": "https://europack.gr/wp-content/uploads/2025/07/2522-2522.jpg", "link": "https://europack.gr/en/antiprosopeia/volpak/", "categories": ["food", "manufacturing"]},
-    {"name": "Stommpy", "slug": "stommpy", "img": "/static/images/site/warehouse-barriers.png", "link": "https://europack.gr/en/antiprosopeia/stommpy/", "categories": ["supply"]},
+    {"name": "All-Fill", "slug": "all-fill", "img": "/static/images/brands/all-fill.webp", "link": "https://europack.gr/en/antiprosopeia/all-fill/", "categories": ["food", "manufacturing"]},
+    {"name": "AluSense", "slug": "alu-sense", "img": "/static/images/brands/alu-sense.png", "link": "https://europack.gr/en/antiprosopeia/alu-sense/", "categories": ["manufacturing", "coffee"]},
+    {"name": "CEIA", "slug": "ceia", "img": "/static/images/brands/ceia.jpg", "link": "https://europack.gr/en/antiprosopeia/ceia/", "categories": ["food", "manufacturing", "quality"]},
+    {"name": "CEIA", "slug": "ceia-2", "img": "/static/images/brands/ceia-2.webp", "link": "https://europack.gr/en/antiprosopeia/ceia-2/", "categories": ["manufacturing", "pharma"]},
+    {"name": "Claranor", "slug": "claranor", "img": "/static/images/brands/claranor.png", "link": "https://europack.gr/en/antiprosopeia/claranor/", "categories": ["food", "manufacturing", "pharma"]},
+    {"name": "Colombini", "slug": "colombini", "img": "/static/images/brands/colombini.jpg", "link": "https://europack.gr/en/antiprosopeia/colombini/", "categories": ["manufacturing", "coffee"]},
+    {"name": "Detectamet", "slug": "detectamet", "img": "/static/images/brands/detectamet.png", "link": "https://europack.gr/en/antiprosopeia/detectamet/", "categories": ["consumables", "manufacturing"]},
+    {"name": "Econocorp", "slug": "econocorp", "img": "/static/images/brands/econocorp.png", "link": "https://europack.gr/en/antiprosopeia/econocorp/", "categories": ["food", "manufacturing"]},
+    {"name": "Endoline", "slug": "endoline", "img": "/static/images/brands/endoline.png", "link": "https://europack.gr/en/antiprosopeia/endoline/", "categories": ["food", "manufacturing"]},
+    {"name": "Fette Compacting", "slug": "fette-compacting", "img": "/static/images/brands/fette-compacting.png", "link": "https://europack.gr/en/antiprosopeia/fette-compacting/", "categories": ["manufacturing", "pharma"]},
+    {"name": "GEYSSEL", "slug": "geyssel", "img": "/static/images/brands/geyssel.jpg", "link": "https://europack.gr/en/antiprosopeia/geyssel/", "categories": ["food", "manufacturing"]},
+    {"name": "Glatt Group", "slug": "glatt-group", "img": "/static/images/brands/glatt-group.jpg", "link": "https://europack.gr/en/antiprosopeia/glatt-group/", "categories": ["manufacturing", "pharma"]},
+    {"name": "Heat and Control", "slug": "heat-and-control", "img": "/static/images/brands/heat-and-control.jpg", "link": "https://europack.gr/en/antiprosopeia/heat-and-control/", "categories": ["food", "manufacturing"]},
+    {"name": "IMA Ilapak", "slug": "ima-ilapak", "img": "/static/images/brands/ima-ilapak.jpg", "link": "https://europack.gr/en/antiprosopeia/ima-ilapak/", "categories": ["food", "manufacturing"]},
+    {"name": "Ishida", "slug": "ishida", "img": "/static/images/brands/ishida.webp", "link": "https://europack.gr/en/antiprosopeia/ishida/", "categories": ["food", "manufacturing", "quality", "pharma"]},
+    {"name": "Mpac", "slug": "mpac", "img": "/static/images/brands/mpac.jpg", "link": "https://europack.gr/en/antiprosopeia/mpac/", "categories": ["food", "manufacturing"]},
+    {"name": "Oli", "slug": "oli", "img": "/static/images/brands/oli.jpg", "link": "https://europack.gr/en/antiprosopeia/oli/", "categories": ["food", "manufacturing"]},
+    {"name": "Packline", "slug": "packline", "img": "/static/images/brands/packline.jpg", "link": "https://europack.gr/en/antiprosopeia/packline/", "categories": ["food", "manufacturing"]},
+    {"name": "Pharma Technology", "slug": "pharma-technology", "img": "/static/images/brands/pharma-technology.png", "link": "https://europack.gr/en/antiprosopeia/pharma-technology/", "categories": ["manufacturing", "pharma"]},
+    {"name": "Probat", "slug": "probat", "img": "/static/images/brands/probat.png", "link": "https://europack.gr/en/antiprosopeia/probat/", "categories": ["manufacturing", "coffee"]},
+    {"name": "SIG Group", "slug": "sig-group", "img": "/static/images/brands/sig-group.webp", "link": "https://europack.gr/en/antiprosopeia/sig-group/", "categories": ["food", "manufacturing"]},
+    {"name": "Sollas", "slug": "sollas", "img": "/static/images/brands/sollas.png", "link": "https://europack.gr/en/antiprosopeia/sollas/", "categories": ["food", "manufacturing"]},
+    {"name": "Supura", "slug": "supura", "img": "/static/images/brands/supura.png", "link": "https://europack.gr/en/antiprosopeia/supura/", "categories": ["food", "manufacturing"]},
+    {"name": "Swiss Can Machinery", "slug": "swiss-can-machinery", "img": "/static/images/brands/swiss-can-machinery.jpg", "link": "https://europack.gr/en/antiprosopeia/swiss-can-machinery/", "categories": ["food", "manufacturing"]},
+    {"name": "Tecma Aries", "slug": "tecma-aries", "img": "/static/images/brands/tecma-aries.webp", "link": "https://europack.gr/en/antiprosopeia/tecma-aries/", "categories": ["food", "manufacturing"]},
+    {"name": "Volpak", "slug": "volpak", "img": "/static/images/brands/volpak.jpg", "link": "https://europack.gr/en/antiprosopeia/volpak/", "categories": ["food", "manufacturing"]},
+    {"name": "Stommpy", "slug": "stommpy", "img": "/static/images/brands/stommpy.webp", "link": "https://europack.gr/en/antiprosopeia/stommpy/", "categories": ["supply"]},
 ]
+
+_PARTNER_BASE = "https://europack.gr/wp-content/uploads/2025/07/"
+
+# "Our Customers" logo marquee on the Company page. Images are hotlinked to the
+# client's own WordPress media library so they display immediately; drop local
+# copies into static/images/partners/ and switch the base later if desired.
+PARTNERS = [
+    {"file": "adelco.png", "link": "https://www.adelco.gr/"},
+    {"file": "2.Agrifreda.png", "link": "https://agrifreda.gr/index.php?lang=en"},
+    {"file": "3.AgroPhoenix.png", "link": "https://agrophoenix.gr"},
+    {"file": "4.Alambra.petroubros-1.png", "link": "https://petroubros.com.cy/el/"},
+    {"file": "5.Archontakis.png", "link": "https://www.archontakis.com/"},
+    {"file": "6.ARIfood.png", "link": "https://arifoods.gr/company/"},
+    {"file": "7.Bennett-1.png", "link": "https://bennett.gr/"},
+    {"file": "8.Boehringer-Ingelheim.png", "link": "https://www.boehringer-ingelheim.com/"},
+    {"file": "9.Cafetex-1.png", "link": "https://cafetex.gr/"},
+    {"file": "damavand.png", "link": "https://www.damavand.gr/"},
+    {"file": "11.dandalis.png", "link": "https://dandalis.gr/"},
+    {"file": "12.DELTA_.png", "link": "https://www.delta.gr/"},
+    {"file": "elbisco_logo.png", "link": "https://elbisco.gr/"},
+    {"file": "14.Elpen_.png", "link": "https://www.elpen.gr/"},
+    {"file": "15.Elvida-1.png", "link": "https://www.elvidafoods.gr/"},
+    {"file": "Fage.png", "link": "https://home.fage/"},
+    {"file": "FAMAR.png", "link": "https://www.famar-group.com/"},
+    {"file": "18.Friesland-Campania.png", "link": "https://www.nounou.gr/"},
+    {"file": "20.genepharm-1.png", "link": "https://www.genepharm.com/en"},
+    {"file": "21.george-charalambous-1.png", "link": "https://gcharalambous.com/el/"},
+    {"file": "22.ellinikoi-ximoi-logo-web.png", "link": "https://hellenicjuices.gr/"},
+    {"file": "24.Ifantis-1.png", "link": "https://ifantis.gr/"},
+    {"file": "25.jacobs-douwe-egberts-professional.png", "link": "https://www.jacobsdouweegbertsprofessional.gr/"},
+    {"file": "26.kore_-1.png", "link": "https://www.kore.gr"},
+    {"file": "krikri-logo-gr.png", "link": "https://www.krikri.gr/"},
+    {"file": "kyknos-full-logo-gold.png", "link": "https://kyknoscanning.com/el/"},
+    {"file": "29.makedoniki-logo-1.png", "link": "https://www.makedoniki.gr/"},
+    {"file": "30.mandrekas-1.png", "link": "https://www.mandrekas.gr/"},
+    {"file": "31.megas-yeeros.png", "link": "https://www.megasyeeros.gr/"},
+    {"file": "32.mevgal-logo.png", "link": "https://mevgal.gr/"},
+    {"file": "Mondelez-International.png", "link": "https://www.mondelezinternational.com/"},
+    {"file": "34.neogal-1.png", "link": "https://neogal.gr/en"},
+    {"file": "35.nestle-logo-gr-1-1.png", "link": "https://www.nestle.gr/"},
+    {"file": "36.NIKAS_.png", "link": "https://nikas.gr/"},
+    {"file": "37.OnePharma-1.png", "link": "https://www.onepharma.gr/en/"},
+    {"file": "38.Ouzounoglou-1.png", "link": "https://www.ouzounoglou.gr/"},
+    {"file": "39.Lavdas-1.png", "link": "https://lavdas.gr/?lang=en"},
+    {"file": "40.papadopoulos.png", "link": "https://papadopoulou.gr/"},
+    {"file": "41.Pellito-1.png", "link": "https://pellito.gr/"},
+    {"file": "42.Pharmapath-1.png", "link": "https://www.pharmapath.eu/"},
+    {"file": "43.Pharmathen-1.png", "link": "https://www.pharmathen.com/"},
+    {"file": "44.pharmazac-1.png", "link": "https://pharmazac.gr/"},
+    {"file": "45.QualitaUnica-1.png", "link": "https://www.qualitaunica.gr/?lang=el"},
+    {"file": "46.Rafarm-1.png", "link": "https://www.rafarmgroup.gr/"},
+    {"file": "47.Rontis-1.png", "link": "https://rontis.com/"},
+    {"file": "48.Uni-Pharma.png", "link": "https://www.uni-pharma.gr/el/"},
+    {"file": "49.Zita-dairies-1.png", "link": "https://www.zitadairies.com/en/"},
+    {"file": "50.ΒΙΑΝΕΞlogo-1.png", "link": "https://www.vianex.gr/intro"},
+    {"file": "51.dodoni.png", "link": "https://dodoni.com/"},
+    {"file": "52.evrofarma.png", "link": "https://evrofarma.gr/"},
+    {"file": "53.Ellinika-galaktokomeia.png", "link": "https://www.hellenicdairies.com/en/"},
+    {"file": "54.ΙΟΝ-1.png", "link": "https://www.ion.gr/"},
+    {"file": "55.ΜπαρμπαΣταθης-1.png", "link": "https://www.barbastathis.com/"},
+    {"file": "56.Χαραλαμπίδης.Κριστης.png", "link": "https://www.charalambideschristis.com.cy/"},
+]
+
+for _p in PARTNERS:
+    _p["img"] = _PARTNER_BASE + _p["file"]
+
 
 CATEGORY_LABELS = {
     "manufacturing": "Product Manufacturing & Packaging Lines",
@@ -42,6 +109,23 @@ CATEGORY_LABELS = {
     "pharma": "Pharmaceutical Industry",
     "consumables": "Consumables",
 }
+
+
+# Maps our internal category keys to the Isotope filter class names used by the
+# live europack.gr theme, so the "All Categories / Consumables / Food industry /
+# Coffee production / Pharmaceutical industry" filter buttons work identically.
+CATEGORY_ISOTOPE = {
+    "consumables": "analwsima",
+    "food": "viomixania_trofimwn",
+    "coffee": "paragwgi_kafe",
+    "pharma": "farmakoviomixania",
+    "quality": "poiotikos_elegxos",
+    "manufacturing": "paragogi-kai-syskeuasia",
+    "supply": "efodiastiki_alysida",
+}
+
+for _b in BRANDS:
+    _b["iso"] = " ".join(CATEGORY_ISOTOPE[c] for c in _b["categories"] if c in CATEGORY_ISOTOPE)
 
 
 def brands_by_category(category):

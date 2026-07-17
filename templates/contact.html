@@ -38,66 +38,82 @@
       </div>
 
       <div class="col-lg-7">
-        <form class="wpcf7-form init" method="POST" action="{{ url_for('main.contact') }}" novalidate>
-          {{ form.hidden_tag() }}
-          <div class="row">
-            <div class="col-lg-6 mb-30">
-              <div class="form-inner">
-                {{ form.name.label }}
-                <span class="wpcf7-form-control-wrap">
-                  {{ form.name(class_="wpcf7-form-control wpcf7-text", placeholder="Daniel Scoot") }}
-                </span>
-                {% for error in form.name.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
-              </div>
-            </div>
-            <div class="col-lg-6 mb-30">
-              <div class="form-inner">
-                {{ form.email.label }}
-                <span class="wpcf7-form-control-wrap">
-                  {{ form.email(class_="wpcf7-form-control wpcf7-email", placeholder="daniel@example.com") }}
-                </span>
-                {% for error in form.email.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
-              </div>
-            </div>
-            <div class="col-lg-6 mb-30">
-              <div class="form-inner">
-                {{ form.phone.label }}
-                <span class="wpcf7-form-control-wrap">
-                  {{ form.phone(class_="wpcf7-form-control wpcf7-text", placeholder="+30 210 0000000") }}
-                </span>
-                {% for error in form.phone.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
-              </div>
-            </div>
-            <div class="col-lg-6 mb-30">
-              <div class="form-inner">
-                {{ form.subject.label }}
-                <span class="wpcf7-form-control-wrap">
-                  {{ form.subject(class_="wpcf7-form-control wpcf7-text", placeholder="Subject") }}
-                </span>
-                {% for error in form.subject.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
-              </div>
-            </div>
-            <div class="col-lg-12 mb-30">
-              <div class="form-inner">
-                {{ form.message.label }}
-                <span class="wpcf7-form-control-wrap">
-                  {{ form.message(class_="wpcf7-form-control wpcf7-textarea", rows=6, placeholder="Write your message here...") }}
-                </span>
-                {% for error in form.message.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <button type="submit" class="primary-btn3 btn-hover">
-                Send Message
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
-                <span></span>
-              </button>
-            </div>
-          </div>
-        </form>
+        <div class="company-map mb-5">
+          <iframe src="https://maps.google.com/maps?q=3+Vouliagmenis+Ave,+Glyfada+165+61,+Athens,+Greece&z=15&output=embed" style="width:100%;height:420px;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Europack location map"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="contact-map mt-5">
-          <iframe src="https://maps.google.com/maps?q=3+Vouliagmenis+Ave,+Glyfada+165+61,+Athens,+Greece&z=15&output=embed" style="width:100%;height:340px;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Europack location map"></iframe>
+<div class="contect-section6 pb-130">
+  <div class="container-fluid one pl--95">
+    <div class="row g-lg-4 gy-5">
+      <div class="col-lg-5">
+        <div class="section-title1 two">
+          <h2>Area of Activity</h2>
+          <p class="pt-md-0 pt-3">Contact us!</p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="contact-form-area two">
+          <form class="wpcf7-form init" method="POST" action="{{ url_for('main.contact') }}" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="row">
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.name.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.name(class_="wpcf7-form-control wpcf7-text", placeholder="Name*") }}
+                  </span>
+                  {% for error in form.name.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.email.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.email(class_="wpcf7-form-control wpcf7-email", placeholder="Email*") }}
+                  </span>
+                  {% for error in form.email.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.subject.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.subject(class_="wpcf7-form-control wpcf7-text", placeholder="Company*") }}
+                  </span>
+                  {% for error in form.subject.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-6 mb-30">
+                <div class="form-inner">
+                  {{ form.phone.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.phone(class_="wpcf7-form-control wpcf7-text", placeholder="Telephone*") }}
+                  </span>
+                  {% for error in form.phone.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-12 mb-30">
+                <div class="form-inner">
+                  {{ form.message.label }}
+                  <span class="wpcf7-form-control-wrap">
+                    {{ form.message(class_="wpcf7-form-control wpcf7-textarea", rows=6, placeholder="Write us your message*") }}
+                  </span>
+                  {% for error in form.message.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <button type="submit" class="primary-btn3 btn-hover">
+                  Submit
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

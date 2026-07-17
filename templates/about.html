@@ -1,8 +1,31 @@
 {% extends "base.html" %}
-{% block title %}Company | {{ config.SITE_NAME }}{% endblock %}
+{% block title %}The Company | {{ config.SITE_NAME }}{% endblock %}
 {% block meta_description %}EUROPACK Industrial Solutions S.A. — supplying, designing and supporting industrial production and packaging equipment in Greece since 1972.{% endblock %}
 {% block content %}
 {% with page_title = "The Company" %}{% include "components/breadcrumb.html" %}{% endwith %}
+
+<section class="logo-section mb-130">
+  <div class="container-fluid one">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="logo-wrapper">
+          <div class="logo-title">
+            <h6>Our Customers</h6>
+          </div>
+          <div class="logo-area">
+            <div class="marquee_text2">
+              {% for partner in partners %}
+              <a href="{{ partner.link }}" target="_blank" rel="noopener">
+                <img src="{{ partner.img }}" alt="Europack customer" onerror="this.closest('a').style.display='none'">
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="why-choose-section mb-130">
   <div class="container-fluid one pl--95">
@@ -10,16 +33,16 @@
       <div class="col-lg-5 d-flex align-items-end pl--95">
         <div class="garph-content">
           <div class="graph-chart">
-            <img class="img-fluid" src="{{ url_for('static', filename='images/site/facility-team.jpg') }}" alt="Europack production facility">
+            <img class="img-fluid" src="{{ url_for('static', filename='images/site/facility-team.jpg') }}" alt="Europack team">
           </div>
         </div>
       </div>
       <div class="col-lg-7 pr--95">
         <div class="choose-content">
           <div class="section-title1 two mb-50">
-            <span>Who We Are</span>
-            <h2>EUROPACK Industrial Solutions S.A.</h2>
-            <p>EUROPACK was founded in 1972. Its primary focus is representing international manufacturers of packaging and food processing machinery and equipment for other industries. With a specialized and well-developed technical support department, EUROPACK Industrial Solutions goes beyond standard servicing &mdash; we design complete production lines and installations and offer high-level consultancy services to our clients.</p>
+            <span>EUROPACK INDUSTRIAL SOLUTIONS S.A.</span>
+            <h5>Supply, Design and Support of Industrial Production &amp; Packaging Equipment</h5>
+            <h2>EUROPACK was founded in 1972. Its primary focus is representing international manufacturers of packaging and food processing machinery and equipment for other industries.</h2>
           </div>
         </div>
       </div>
@@ -34,15 +57,14 @@
         <div class="col-xxl-8 col-lg-7">
           <div class="about-content pr--95">
             <div class="section-title1 two mb-50">
-              <span>Our Approach</span>
-              <h2>Our Team's Strong Technical Expertise</h2>
-              <p>Our team's strong technical expertise and extensive industrial experience have enabled us to collaborate with companies that offer innovative and technologically advanced solutions. As a result, EUROPACK provides not only high-quality equipment but also comprehensive support for integrating new technologies and applications.</p>
+              <span>About Us</span>
+              <h2>Our team's strong technical expertise and extensive industrial experience have enabled us to collaborate with companies that offer innovative and technologically advanced solutions. As a result, EUROPACK provides not only high-quality equipment but also comprehensive support for integrating new technologies and applications.</h2>
             </div>
           </div>
         </div>
         <div class="col-xxl-4 col-lg-5">
           <div class="about-img">
-            <img class="img-fluid" src="{{ url_for('static', filename='images/site/office-interior.png') }}" alt="Europack office">
+            <img class="img-fluid" src="{{ url_for('static', filename='images/site/office-interior.png') }}" alt="Europack facility">
           </div>
         </div>
       </div>
@@ -83,20 +105,46 @@
   </div>
 </section>
 
-<section class="why-choose-section">
+<section class="why-choose-section mb-130">
   <div class="container-fluid one pl--95">
     <div class="row g-xl-4 gy-5 align-items-center">
-      <div class="col-lg-12">
-        <div class="section-title1 two text-center">
-          <blockquote style="font-style: italic;">
-            &ldquo;At Europack I.S., we don't just sell equipment &mdash; we transfer technical knowledge and support our customers at every step, before and after installation.&rdquo;
-            <footer style="margin-top:10px; font-style: normal; font-weight:600;">Alexandros Paraskevaidis, Company CEO</footer>
-          </blockquote>
+      <div class="col-lg-7 pr--95">
+        <div class="choose-content">
+          <div class="section-title1 two mb-50">
+            <h2>With a specialized and well-developed technical support department, EUROPACK Industrial Solutions goes beyond standard servicing. We design complete production lines and installations and offer high-level consultancy services to our clients.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 d-flex align-items-end">
+        <div class="garph-content">
+          <div class="graph-chart">
+            <img class="img-fluid" src="{{ url_for('static', filename='images/site/team-group.png') }}" alt="Europack founders">
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="horizontal-scrolling-section">
+  <div class="single-scroll-container two">
+    <div class="container-fluid one pl--95">
+      <div class="horizontal-scrolling-content two">
+        <div class="horizental-scrolling-top-content">
+          <div class="section-title1 two">
+            <h2>&ldquo;At Europack I.S., we don&rsquo;t just sell equipment &mdash; we transfer technical knowledge and support our customers at every step, before and after installation.&rdquo;</h2>
+          </div>
+          <div class="name-degi">
+            <h5>Alexandros Paraskevaidis,</h5>
+            <span>Company CEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "components/services_cards.html" %}
 
 <section class="solution-section pt-130 pb-130">
   <div class="container-fluid one">
@@ -106,9 +154,6 @@
           <span class="two">Our Team</span>
           <h2>Our people make Our Excellence</h2>
         </div>
-      </div>
-      <div class="col-12 mb-4">
-        <img class="img-fluid rounded" src="{{ url_for('static', filename='images/site/team-group.png') }}" alt="Europack team on site" style="width:100%; max-height:420px; object-fit:cover;">
       </div>
       <div class="col-12">
         <div class="row g-lg-4 gy-5">
@@ -124,22 +169,6 @@
           {% endfor %}
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="portfolio-two-column-section pt-5 mb-130">
-  <div class="container-fluid one pl--95">
-    <div class="section-title1 two mb-50">
-      <span>Our Facility</span>
-      <h2>Equipment &amp; Installations in the Field</h2>
-    </div>
-    <div class="row g-md-4 gy-4">
-      {% for img in gallery_images %}
-      <div class="col-md-3 col-sm-6">
-        <img class="img-fluid rounded" src="{{ url_for('static', filename='images/gallery/' ~ img) }}" alt="Europack equipment" style="width:100%; height:180px; object-fit:cover;">
-      </div>
-      {% endfor %}
     </div>
   </div>
 </section>

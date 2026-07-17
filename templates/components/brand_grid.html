@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row g-md-4 gy-5 mb-70 grid">
       {% for brand in brands %}
-      <div class="col-md-6 element-item">
+      <div class="col-md-6 element-item {{ brand.iso }}">
         <div class="eg-card4">
           <div class="card-img">
             <a href="{{ brand.link }}" target="_blank" rel="noopener">
