@@ -27,6 +27,190 @@
 /* Error pages --------------------------------------------------------------*/
 .error-section { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0; }
 
+/* Home hero ---------------------------------------------------------------
+   WordPress sets this image through page-level generated CSS. The Flask page
+   needs the same rule locally so the white header/cards sit over the machine
+   photo instead of a blank white hero. */
+.banner3-section,
+#home3-banner-bg {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/static/images/site/hero-live.webp") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.banner3-section,
+.banner3-section #home3-banner-bg,
+.banner3-section .banner-wrapper,
+.banner3-section .banner3-slider,
+.banner3-section .swiper-wrapper,
+.banner3-section .swiper-slide,
+.banner3-section .eg-card3 {
+  min-height: 100vh !important;
+}
+
+.banner3-section {
+  height: 100vh !important;
+  overflow: hidden;
+}
+
+.banner3-section #home3-banner-bg {
+  height: 100% !important;
+}
+
+.header-topbar-area {
+  background: transparent;
+}
+
+.header-area.style-2.two .header-logo {
+  background: rgba(33, 33, 33, 0.58);
+  min-height: 68px;
+  align-items: center;
+}
+
+.header-area.style-2.two .header-logo img {
+  max-width: 178px;
+}
+
+.header-language {
+  position: relative;
+  min-width: 110px;
+  height: 56px;
+  margin-right: 18px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  color: #111;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.header-language ul {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: 0.2s ease;
+}
+
+.header-language:hover ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header-language a {
+  display: block;
+  padding: 9px 22px;
+  color: #111;
+}
+
+.header-translate {
+  position: relative;
+  margin-right: 18px;
+}
+
+.translate-toggle {
+  height: 56px;
+  min-width: 132px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(20, 20, 20, 0.72);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.translate-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  width: 170px;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+  background: #fff;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: 0.2s ease;
+}
+
+.header-translate.is-open .translate-menu,
+.header-translate:hover .translate-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.translate-menu button {
+  border: 0;
+  background: transparent;
+  color: #111;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.translate-menu button:hover {
+  background: #ff7f1f;
+  color: #fff;
+}
+
+.banner3-section,
+#home3-banner-bg {
+  transition: background-image 0.28s ease;
+}
+
+.banner3-section .eg-card3 .catgory-and-title > a {
+  transition: 0.2s ease;
+}
+
+.banner3-section .eg-card3:hover .catgory-and-title > a,
+.banner3-section .eg-card3.is-active .catgory-and-title > a {
+  background: #ff7f1f;
+  border-color: #ff7f1f;
+  color: #fff;
+}
+
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3:hover),
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3:focus-within),
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3.is-active) {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/static/images/site/hero-live-02.webp") !important;
+}
+
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3:hover),
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3:focus-within),
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3.is-active) {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/static/images/site/hero-live-03.webp") !important;
+}
+
 /* Home "About Us" counters + image ------------------------------------------
    The live site's flex layout here (counters left, photo right, shrinking to
    fit) is driven by a per-page inline <style> block WordPress injects, which
@@ -71,4 +255,214 @@
   color: currentColor;
   pointer-events: none;
   user-select: none;
+}
+
+/* Agencies showcase ------------------------------------------------------- */
+.agencies-hero-section {
+  background: #373737;
+  color: #fff;
+}
+
+.agencies-hero-head {
+  padding: 10px 0 42px;
+}
+
+.agencies-kicker {
+  margin-bottom: 28px;
+}
+
+.agencies-kicker span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 22px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.agencies-head-row {
+  display: grid;
+  grid-template-columns: minmax(280px, 460px) 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.agencies-head-row h2 {
+  margin: 0;
+  font-size: 72px;
+  line-height: 1.06;
+  font-weight: 300;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.agencies-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.filter-pill {
+  min-height: 64px;
+  padding: 0 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #1f1f1f;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.filter-pill.active,
+.filter-pill:hover {
+  background: #171717;
+  color: #fff;
+}
+
+.agencies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.agencies-grid-lower {
+  margin-top: 28px;
+}
+
+.agency-card {
+  min-width: 0;
+}
+
+.agency-card-link {
+  display: block;
+  color: #fff;
+}
+
+.agency-card-img {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  overflow: hidden;
+}
+
+.agency-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.32s ease, filter 0.32s ease;
+}
+
+.agency-card-body {
+  padding: 22px 2px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.agency-card-body h3 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 300;
+  color: #121212;
+}
+
+.explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #121212;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.agency-card-link:hover .agency-card-img img {
+  transform: scale(1.03);
+  filter: brightness(1.04) saturate(1.04);
+}
+
+.brand-detail-layout {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.15fr) minmax(280px, 0.85fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.brand-detail-media {
+  background: #fff;
+  min-height: 520px;
+  padding: 24px;
+}
+
+.brand-detail-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand-detail-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 24px;
+  padding: 24px 0;
+  color: #fff;
+}
+
+.brand-detail-copy p {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 22px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+@media (max-width: 1199px) {
+  .brand-detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1199px) {
+  .agencies-head-row {
+    grid-template-columns: 1fr;
+  }
+
+  .agencies-filters {
+    justify-content: flex-start;
+  }
+
+  .agencies-head-row h2 {
+    font-size: 56px;
+  }
+
+  .agencies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .agencies-head-row h2 {
+    font-size: 42px;
+  }
+
+  .agencies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-pill {
+    width: 100%;
+    white-space: normal;
+    justify-content: space-between;
+  }
 }

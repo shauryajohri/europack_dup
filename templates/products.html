@@ -2,20 +2,54 @@
 {% block title %}Product Manufacturing & Packaging Lines | {{ config.SITE_NAME }}{% endblock %}
 {% block meta_description %}Europack represents international manufacturers of product manufacturing and packaging line equipment for the food, coffee, and pharmaceutical industries.{% endblock %}
 {% block content %}
-{% with page_title = "Product Manufacturing & Packaging lines" %}{% include "components/breadcrumb.html" %}{% endwith %}
+<section class="agencies-hero-section pt-5 pb-130">
+  <div class="container-fluid one">
+    <div class="agencies-hero-head">
+      <div class="agencies-kicker">
+        <span>Αντιπροσωπείες</span>
+      </div>
+      <div class="agencies-head-row">
+        <h2>Reliable quality!</h2>
+        <div class="agencies-filters">
+          <a class="filter-pill active" href="{{ url_for('main.products') }}">Product Manufacturing and Packaging lines <i class="bi bi-arrow-up-right"></i></a>
+          <a class="filter-pill" href="{{ url_for('main.quality_control') }}">Quality control <i class="bi bi-arrow-up-right"></i></a>
+          <a class="filter-pill" href="{{ url_for('main.supply_chain') }}">Supply Chain <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </div>
 
-<section id="filters" class="pt-130 px-sm-0 px-5">
-  <div class="container">
-    <ul class="filter-wrapper gap-md-5 gap-3 my-50 flex-sm-row flex-column flex-wrap align-items-start">
-      <li class="button active" data-filter="*">All Categories</li>
-      <li class="button" data-filter=".analwsima">Consumables</li>
-      <li class="button" data-filter=".viomixania_trofimwn">Food industry</li>
-      <li class="button" data-filter=".paragwgi_kafe">Coffee production</li>
-      <li class="button" data-filter=".farmakoviomixania">Pharmaceutical industry</li>
-    </ul>
+    <div class="agencies-grid">
+      {% for brand in brands[:3] %}
+      <article class="agency-card">
+        <a class="agency-card-link" href="{{ brand.local_link }}">
+          <div class="agency-card-img">
+            <img src="{{ brand.img }}" alt="{{ brand.name }}">
+          </div>
+          <div class="agency-card-body">
+            <h3>{{ brand.name }}</h3>
+            <span class="explore-link">Explore More <i class="bi bi-arrow-up-right"></i></span>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="agencies-grid agencies-grid-lower">
+      {% for brand in brands[3:6] %}
+      <article class="agency-card">
+        <a class="agency-card-link" href="{{ brand.local_link }}">
+          <div class="agency-card-img">
+            <img src="{{ brand.img }}" alt="{{ brand.name }}">
+          </div>
+          <div class="agency-card-body">
+            <h3>{{ brand.name }}</h3>
+            <span class="explore-link">Explore More <i class="bi bi-arrow-up-right"></i></span>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
-
-{% include "components/brand_grid.html" %}
 {% include "components/cta.html" %}
 {% endblock %}

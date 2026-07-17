@@ -17,11 +17,21 @@ from models.models import ContactMessage, NewsletterSubscriber
 main = Blueprint("main", __name__)
 
 
+def _local_brand(brand):
+    item = dict(brand)
+    item["local_link"] = url_for("main.brand_detail", slug=brand["slug"])
+    return item
+
+
+def _local_brands(brand_list):
+    return [_local_brand(brand) for brand in brand_list]
+
+
 @main.route("/")
 def index():
     """Render the homepage with hero, stats, services, brands, CTA."""
     newsletter_form = NewsletterForm()
-    return render_template("index.html", newsletter_form=newsletter_form, brands=BRANDS[:14])
+    return render_template("index.html", newsletter_form=newsletter_form, brands=_local_brands(BRANDS[:14]))
 
 
 GALLERY_IMAGES = [
@@ -62,10 +72,19 @@ def services():
 def products():
     """Render the Agencies / product manufacturing & packaging lines page."""
     newsletter_form = NewsletterForm()
+    curated_slugs = [
+        "ceia",
+        "claranor",
+        "econocorp",
+        "swiss-can-machinery",
+        "endoline",
+        "supura",
+    ]
+    curated_brands = _local_brands([brand for slug in curated_slugs for brand in BRANDS if brand["slug"] == slug])
     return render_template(
         "products.html",
         newsletter_form=newsletter_form,
-        brands=brands_by_category("manufacturing"),
+        brands=curated_brands,
     )
 
 
@@ -76,7 +95,7 @@ def quality_control():
     return render_template(
         "quality-control.html",
         newsletter_form=newsletter_form,
-        brands=brands_by_category("quality"),
+        brands=_local_brands(brands_by_category("quality")),
     )
 
 
@@ -87,7 +106,22 @@ def supply_chain():
     return render_template(
         "supply-chain.html",
         newsletter_form=newsletter_form,
-        brands=brands_by_category("supply"),
+        brands=_local_brands(brands_by_category("supply")),
+    )
+
+
+@main.route("/brand/<slug>")
+def brand_detail(slug):
+    newsletter_form = NewsletterForm()
+    brand = next((brand for brand in BRANDS if brand["slug"] == slug), None)
+    if brand is None:
+        return redirect(url_for("main.products"))
+    related = _local_brands([item for item in BRANDS if item["slug"] != slug][:6])
+    return render_template(
+        "brand_detail.html",
+        newsletter_form=newsletter_form,
+        brand=_local_brand(brand),
+        related_brands=related,
     )
 
 

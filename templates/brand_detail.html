@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ brand.name }} | {{ config.SITE_NAME }}{% endblock %}
+{% block meta_description %}{{ brand.name }} equipment and packaging solutions represented by Europack.{% endblock %}
+{% block content %}
+<section class="agencies-hero-section pt-5 pb-130">
+  <div class="container-fluid one">
+    <div class="agencies-hero-head">
+      <div class="agencies-kicker">
+        <span>Αντιπροσωπείες</span>
+      </div>
+      <div class="agencies-head-row">
+        <h2>{{ brand.name }}</h2>
+        <div class="agencies-filters">
+          <a class="filter-pill" href="{{ url_for('main.products') }}">Product Manufacturing and Packaging lines <i class="bi bi-arrow-up-right"></i></a>
+          <a class="filter-pill" href="{{ url_for('main.quality_control') }}">Quality control <i class="bi bi-arrow-up-right"></i></a>
+          <a class="filter-pill" href="{{ url_for('main.supply_chain') }}">Supply Chain <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-detail-layout">
+      <div class="brand-detail-media">
+        <img src="{{ brand.img }}" alt="{{ brand.name }}">
+      </div>
+      <div class="brand-detail-copy">
+        <p>
+          Europack represents {{ brand.name }} in Greece and supports customers with
+          integration, service, and after-sales technical guidance.
+        </p>
+        <a class="primary-btn4 btn-hover" href="{{ url_for('main.products') }}">
+          Back to Agencies
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+          <span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
