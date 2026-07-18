@@ -4,15 +4,11 @@
 {% block content %}
 <section class="company-hero-section pt-5 pb-100">
   <div class="container-fluid one">
-    <div class="company-hero-head">
-      <div class="company-kicker">
-        <span>europack</span>
-      </div>
-      <h1>The Company</h1>
-    </div>
-
-    <div class="company-hero-media">
+    <div class="company-hero-media company-hero-media--lifted">
       <img src="{{ url_for('static', filename='images/site/office-interior.png') }}" alt="Europack office">
+      <div class="company-hero-overlay">
+        <h1>The Company</h1>
+      </div>
     </div>
   </div>
 </section>

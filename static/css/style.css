@@ -342,13 +342,14 @@
 }
 
 .agency-card-link {
+  position: relative;
   display: block;
   color: #fff;
 }
 
 .agency-card-img {
   position: relative;
-  aspect-ratio: 1 / 1;
+  height: 436px;
   background: #fff;
   overflow: hidden;
 }
@@ -361,19 +362,59 @@
   transition: transform 0.32s ease, filter 0.32s ease;
 }
 
-.agency-card-body {
-  padding: 22px 2px 0;
+.agency-card-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 18px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 20px 22px 22px 22px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.16) 45%, rgba(0, 0, 0, 0) 75%);
 }
 
-.agency-card-body h3 {
+.agency-chip {
+  position: absolute;
+  right: 22px;
+  bottom: 78px;
+  display: inline-flex;
+  align-items: center;
+  max-width: calc(100% - 44px);
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
+  backdrop-filter: blur(2px);
+}
+
+.agency-card-copy {
+  width: min(100%, 240px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.agency-card-copy h3 {
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
+  line-height: 1.1;
   font-weight: 300;
-  color: #121212;
+  color: #fff;
+  text-align: right;
+}
+
+.agency-card-copy .explore-link {
+  color: #fff;
+  font-size: 17px;
+  text-align: right;
 }
 
 .explore-link {
@@ -388,6 +429,10 @@
 .agency-card-link:hover .agency-card-img img {
   transform: scale(1.03);
   filter: brightness(1.04) saturate(1.04);
+}
+
+.agency-card-link:hover .agency-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0) 75%);
 }
 
 .brand-detail-layout {
@@ -432,11 +477,6 @@
   background: #fff;
 }
 
-.company-hero-head {
-  margin-bottom: 18px;
-}
-
-.company-kicker span,
 .logo-title h6 {
   display: inline-flex;
   align-items: center;
@@ -449,25 +489,39 @@
   color: inherit;
 }
 
-.company-hero-head h1 {
-  margin: 18px 0 0;
-  font-size: 68px;
-  line-height: 1.06;
-  font-weight: 300;
-  color: #111;
+.company-hero-media {
+  position: relative;
+  margin-top: -6px;
+  background: #ededed;
 }
 
-.company-hero-media {
-  margin-top: 10px;
-  background: #ededed;
+.company-hero-media--lifted {
+  margin-top: -12px;
 }
 
 .company-hero-media img {
   width: 100%;
-  height: 530px;
+  height: 440px;
   display: block;
   object-fit: cover;
   object-position: center;
+}
+
+.company-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 32px;
+}
+
+.company-hero-overlay h1 {
+  margin: 0;
+  font-size: 62px;
+  line-height: 1;
+  font-weight: 300;
+  color: #111;
 }
 
 .logo-section .logo-wrapper {
@@ -567,7 +621,7 @@
 .horizontal-scrolling-section .single-scroll-container {
   position: relative;
   overflow: hidden;
-  min-height: 560px;
+  min-height: 420px;
   background: #111;
 }
 
@@ -575,27 +629,26 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(10, 16, 28, 0.78), rgba(10, 16, 28, 0.58)),
-    url("/static/images/site/background-scaled.webp") center center / cover no-repeat;
+    linear-gradient(rgba(10, 16, 28, 0.70), rgba(10, 16, 28, 0.42)),
+    url("/static/images/site/bow_tie.png") center center / cover no-repeat;
 }
 
 .horizontal-scrolling-section .horizontal-scrolling-content {
   position: relative;
   z-index: 1;
-  min-height: 560px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding: 54px 0 38px;
 }
 
 .horizontal-scrolling-section .horizental-scrolling-top-content {
-  max-width: 740px;
+  max-width: 720px;
 }
 
 .horizontal-scrolling-section .section-title1.two h2 {
-  font-size: 54px;
+  font-size: 42px;
   line-height: 1.12;
   color: #fff;
 }
@@ -614,11 +667,21 @@
   color: #fff;
 }
 
+.horizontal-scrolling-section .name-degi h5 {
+  font-size: 18px;
+}
+
+.horizontal-scrolling-section .name-degi span {
+  font-size: 16px;
+}
+
 .horizontal-scrolling-section .consulting {
   display: inline-flex;
   align-items: center;
-  gap: 18px;
-  padding-top: 28px;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  margin-top: 24px;
 }
 
 .horizontal-scrolling-section .consulting svg {
@@ -627,7 +690,7 @@
 
 .horizontal-scrolling-section .consulting p {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .company-stats-section .company-portrait img,
