@@ -118,67 +118,6 @@
   color: #111;
 }
 
-.header-translate {
-  position: relative;
-  margin-right: 18px;
-}
-
-.translate-toggle {
-  height: 56px;
-  min-width: 132px;
-  padding: 0 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(20, 20, 20, 0.72);
-  color: #fff;
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.translate-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  z-index: 40;
-  width: 170px;
-  padding: 8px;
-  display: grid;
-  gap: 2px;
-  background: #fff;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: 0.2s ease;
-}
-
-.header-translate.is-open .translate-menu,
-.header-translate:hover .translate-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.translate-menu button {
-  border: 0;
-  background: transparent;
-  color: #111;
-  padding: 10px 12px;
-  text-align: left;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.translate-menu button:hover {
-  background: #ff7f1f;
-  color: #fff;
-}
-
 .banner3-section,
 #home3-banner-bg {
   transition: background-image 0.28s ease;

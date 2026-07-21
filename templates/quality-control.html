@@ -1,16 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Quality Control | {{ config.SITE_NAME }}{% endblock %}
+{% block title %}Quality control | {{ config.SITE_NAME }}{% endblock %}
 {% block meta_description %}Europack represents dosing, weighing, industrial washing, product and packaging inspection, and labeling machinery manufacturers such as CEIA and Ishida.{% endblock %}
 {% block content %}
-{% with page_title = "Quality control" %}{% include "components/breadcrumb.html" %}{% endwith %}
-
-<div class="portfolio-two-column-section pt-5">
-  <div class="container">
-    <p class="lead">Dosing, Weighing, Industrial Washing Machines, Product and Packaging Inspection Machines, Labeling Machines</p>
-    <img class="img-fluid rounded mb-4" src="{{ url_for('static', filename='images/site/metal-detector-line.jpg') }}" alt="Quality control inspection line" style="max-height:380px; object-fit:cover; width:100%;">
-  </div>
-</div>
-
-{% include "components/brand_grid.html" %}
-{% include "components/cta.html" %}
+{% set page_title = "Quality control" %}
+{% set category_tagline = "Ensure the best quality" %}
+{% set category_intro = "Dosing, Weighing, Industrial Washing Machines, Product and Packaging Inspection Machines, Labeling Machines" %}
+{% include "components/category_archive.html" %}
 {% endblock %}

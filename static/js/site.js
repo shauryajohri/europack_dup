@@ -23,30 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   setHeroBackground(heroCards.find((card) => card.classList.contains("is-active")) || heroCards[0]);
-
-  const translate = document.querySelector(".header-translate");
-  const translateToggle = document.querySelector(".translate-toggle");
-
-  if (translate && translateToggle) {
-    translateToggle.addEventListener("click", () => {
-      const isOpen = translate.classList.toggle("is-open");
-      translateToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    translate.querySelectorAll("[data-lang]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const targetLanguage = button.getAttribute("data-lang");
-        const pageUrl = window.location.href;
-        const translateUrl = `https://translate.google.com/translate?sl=auto&tl=${targetLanguage}&u=${encodeURIComponent(pageUrl)}`;
-        window.open(translateUrl, "_blank", "noopener");
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!translate.contains(event.target)) {
-        translate.classList.remove("is-open");
-        translateToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
 });

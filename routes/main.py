@@ -70,21 +70,16 @@ def services():
 
 @main.route("/products")
 def products():
-    """Render the Agencies / product manufacturing & packaging lines page."""
+    """Render the Agencies / product manufacturing & packaging lines page.
+
+    The live archive lists every brand in the category (26 of them) in
+    alphabetical order, not a curated subset.
+    """
     newsletter_form = NewsletterForm()
-    curated_slugs = [
-        "ceia",
-        "claranor",
-        "econocorp",
-        "swiss-can-machinery",
-        "endoline",
-        "supura",
-    ]
-    curated_brands = _local_brands([brand for slug in curated_slugs for brand in BRANDS if brand["slug"] == slug])
     return render_template(
         "products.html",
         newsletter_form=newsletter_form,
-        brands=curated_brands,
+        brands=_local_brands(brands_by_category("manufacturing")),
     )
 
 

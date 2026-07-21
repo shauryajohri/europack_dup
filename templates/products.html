@@ -1,61 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Product Manufacturing & Packaging Lines | {{ config.SITE_NAME }}{% endblock %}
+{% block title %}Product Manufacturing and Packaging | {{ config.SITE_NAME }}{% endblock %}
 {% block meta_description %}Europack represents international manufacturers of product manufacturing and packaging line equipment for the food, coffee, and pharmaceutical industries.{% endblock %}
 {% block content %}
-<section class="agencies-hero-section pt-5 pb-130">
-  <div class="container-fluid one">
-    <div class="agencies-hero-head">
-      <div class="agencies-kicker">
-        <span>Αντιπροσωπείες</span>
-      </div>
-      <div class="agencies-head-row">
-        <h2>Reliable quality!</h2>
-        <div class="agencies-filters">
-          <a class="filter-pill active" href="{{ url_for('main.products') }}">Product Manufacturing and Packaging lines <i class="bi bi-arrow-up-right"></i></a>
-          <a class="filter-pill" href="{{ url_for('main.quality_control') }}">Quality control <i class="bi bi-arrow-up-right"></i></a>
-          <a class="filter-pill" href="{{ url_for('main.supply_chain') }}">Supply Chain <i class="bi bi-arrow-up-right"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="agencies-grid">
-      {% for brand in brands[:3] %}
-      <article class="agency-card">
-        <a class="agency-card-link" href="{{ brand.local_link }}">
-          <div class="agency-card-img">
-            <img src="{{ brand.img }}" alt="{{ brand.name }}">
-            <div class="agency-card-overlay">
-              <span class="agency-chip">Product Manufacturing and Packaging</span>
-              <div class="agency-card-copy">
-                <h3>{{ brand.name }}</h3>
-                <span class="explore-link">Explore More <i class="bi bi-arrow-up-right"></i></span>
-              </div>
-            </div>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
-    </div>
-
-    <div class="agencies-grid agencies-grid-lower">
-      {% for brand in brands[3:6] %}
-      <article class="agency-card">
-        <a class="agency-card-link" href="{{ brand.local_link }}">
-          <div class="agency-card-img">
-            <img src="{{ brand.img }}" alt="{{ brand.name }}">
-            <div class="agency-card-overlay">
-              <span class="agency-chip">Product Manufacturing and Packaging</span>
-              <div class="agency-card-copy">
-                <h3>{{ brand.name }}</h3>
-                <span class="explore-link">Explore More <i class="bi bi-arrow-up-right"></i></span>
-              </div>
-            </div>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% include "components/cta.html" %}
+{# Live page heading is "Product Manufacturing and Packaging" (no trailing
+   "lines" — that word only appears in the nav/footer menu label). #}
+{% set page_title = "Product Manufacturing and Packaging" %}
+{% set category_tagline = "Get the Latest Automation Technologies" %}
+{# This archive shows an Isotope filter bar instead of a description line. #}
+{% set category_filters = [
+     {"label": "Consumables",            "iso": "analwsima"},
+     {"label": "Food industry",          "iso": "viomixania_trofimwn"},
+     {"label": "Coffee production",      "iso": "paragwgi_kafe"},
+     {"label": "Pharmaceutical industry","iso": "farmakoviomixania"},
+   ] %}
+{% include "components/category_archive.html" %}
 {% endblock %}
