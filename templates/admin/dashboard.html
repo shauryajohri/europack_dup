@@ -1,0 +1,66 @@
+{% extends "admin/layout.html" %}
+{% block title %}News Admin | {{ config.SITE_NAME }}{% endblock %}
+{% block body %}
+<div class="admin-topbar">
+  <span class="brand">{{ config.SITE_NAME }} Admin</span>
+  <div class="nav-links">
+    <a href="{{ url_for('main.news') }}" target="_blank" rel="noopener">View News Page</a>
+    <a href="{{ url_for('admin.logout') }}">Log Out</a>
+  </div>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+        <div class="flash-message flash-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<div class="admin-wrap">
+  <div class="admin-card">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="admin-title">News Posts</h1>
+        <p class="admin-subtitle" style="margin:0;">Add, edit or remove entries shown on the News page.</p>
+      </div>
+      <a class="btn" href="{{ url_for('admin.news_new') }}">+ Add News Post</a>
+    </div>
+
+    {% if posts %}
+    <table class="news-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Excerpt</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in posts %}
+        <tr>
+          <td>{% if post.img %}<img src="{{ news_image_url(post.img) }}" alt="">{% endif %}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ (post.excerpt or "")[:80] }}{% if post.excerpt and post.excerpt|length > 80 %}…{% endif %}</td>
+          <td>
+            <div class="row-actions">
+              <a class="btn btn-ghost btn-sm" href="{{ url_for('admin.news_edit', post_id=post.id) }}">Edit</a>
+              <form method="POST" action="{{ url_for('admin.news_delete', post_id=post.id) }}" onsubmit="return confirm('Delete this news post?');">
+                {{ delete_form.hidden_tag() }}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">No news posts yet. Add your first one above.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

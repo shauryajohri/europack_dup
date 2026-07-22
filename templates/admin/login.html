@@ -1,0 +1,35 @@
+{% extends "admin/layout.html" %}
+{% block title %}Admin Login | {{ config.SITE_NAME }}{% endblock %}
+{% block body %}
+<div class="admin-auth-wrap">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container">
+        {% for category, message in messages %}
+          <div class="flash-message flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="admin-card">
+    <h1 class="admin-title">Admin Login</h1>
+    <p class="admin-subtitle">Sign in to manage the News section.</p>
+
+    <form method="POST" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.username.label }}
+        {{ form.username(autofocus=true) }}
+        {% for error in form.username.errors %}<div class="field-errors">{{ error }}</div>{% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}<div class="field-errors">{{ error }}</div>{% endfor %}
+      </div>
+      <button type="submit" class="btn">Log In</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

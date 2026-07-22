@@ -4,7 +4,6 @@ from flask import Blueprint, current_app, flash, redirect, render_template, url_
 from data.site_content import (
     BRANDS,
     CONTACT_DIRECTORY,
-    NEWS,
     PARTNERS,
     TEAM,
     brands_by_category,
@@ -12,7 +11,7 @@ from data.site_content import (
 from forms.contact_form import ContactForm
 from forms.newsletter_form import NewsletterForm
 from models import db
-from models.models import ContactMessage, NewsletterSubscriber
+from models.models import ContactMessage, NewsletterSubscriber, NewsPost
 
 main = Blueprint("main", __name__)
 
@@ -60,11 +59,12 @@ def about():
 def services():
     """Render the Services page."""
     newsletter_form = NewsletterForm()
+    latest_news = NewsPost.query.order_by(NewsPost.created_at.desc()).limit(4).all()
     return render_template(
         "services.html",
         newsletter_form=newsletter_form,
         form=ContactForm(),
-        news_items=NEWS[:4],
+        news_items=[item.to_dict() for item in latest_news],
     )
 
 
@@ -124,7 +124,12 @@ def brand_detail(slug):
 def news():
     """Render the News listing page."""
     newsletter_form = NewsletterForm()
-    return render_template("news.html", newsletter_form=newsletter_form, news_items=NEWS)
+    all_news = NewsPost.query.order_by(NewsPost.created_at.desc()).all()
+    return render_template(
+        "news.html",
+        newsletter_form=newsletter_form,
+        news_items=[item.to_dict() for item in all_news],
+    )
 
 
 @main.route("/contact", methods=["GET", "POST"])

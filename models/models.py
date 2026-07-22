@@ -5,6 +5,8 @@ data intended to make the site runnable out of the box.
 """
 from datetime import datetime
 
+from werkzeug.security import check_password_hash, generate_password_hash
+
 from models import db
 
 
@@ -75,3 +77,47 @@ class NewsletterSubscriber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class NewsPost(db.Model):
+    """A News section entry, manageable from the /admin dashboard."""
+
+    __tablename__ = "news_posts"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    excerpt = db.Column(db.Text, nullable=True)
+    img = db.Column(db.String(500), nullable=True)
+    link = db.Column(db.String(500), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "excerpt": self.excerpt,
+            "img": self.img,
+            "link": self.link,
+        }
+
+
+class AdminUser(db.Model):
+    """The single admin account used to manage the News section.
+
+    Only one admin account can exist at a time: visiting /admin before
+    any account has been created shows a one-time setup form instead
+    of the login form.
+    """
+
+    __tablename__ = "admin_users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
