@@ -1331,11 +1331,17 @@
 }
 
 .brand-strip-category {
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  font-size: 13px;
   line-height: 1.2;
-  letter-spacing: 0.45px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.2px;
+  text-transform: none;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.18);
 }
 
 .brand-strip-name {
