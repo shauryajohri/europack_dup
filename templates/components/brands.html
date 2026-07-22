@@ -1,4 +1,4 @@
-<section class="portfolio-section">
+<section class="portfolio-section brand-strip-section">
   <div class="container-fluid one">
     <div class="row">
       <div class="col-lg-12 pl--95 mb-60">
@@ -27,43 +27,30 @@
         </div>
       </div>
       <div class="col-lg-12">
-        <div class="portfolio-tab-content">
-          <div class="tab-content mb-60">
-            <div class="tab-pane fade show active">
-              <div class="col-lg-12">
-                <div class="swiper portfolio-slider">
-                  <div class="swiper-wrapper">
-                    {% for brand in brands %}
-                    <div class="swiper-slide">
-                      <div class="eg-card4">
-                        <div class="card-img">
-                          <a href="{{ brand.local_link }}">
-                            <img src="{{ brand.img }}" alt="{{ brand.name }}">
-                          </a>
-                        </div>
-                        <div class="card-content">
-                          <div class="title-and-btn">
-                            <h4><a href="{{ brand.local_link }}">{{ brand.name }}</a></h4>
-                            <a class="explore-btn" href="{{ brand.local_link }}">
-                              Explore More
-                              <svg height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10.1865 1.06237L0 11.2484L0.751627 12L10.9376 1.81347V8.85645H12V0H3.14355V1.06237H10.1865Z" fill-rule="evenodd"></path></svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="scrollbar-and-slider-btn d-flex align-items-center justify-content-between mt-4">
-            <div class="progress-pagination swiper-pagination-progressbar swiper-pagination-horizontal"></div>
-            <div class="slider-btn-group w-100">
-              <div class="slider-btn prev-4"></div>
-              <div class="slider-btn next-4"></div>
-            </div>
+        <div class="brand-strip-viewport">
+          <div class="brand-strip-track">
+            {% for brand in brand_logos %}
+            <a class="brand-strip-tile" href="{{ brand.link }}" target="_blank" rel="noopener">
+              <span class="brand-strip-img">
+                <img src="{{ brand.img }}" alt="{{ brand.name }}" loading="lazy">
+              </span>
+              <span class="brand-strip-caption">
+                <span class="brand-strip-category">{{ brand.category_label }}</span>
+                <span class="brand-strip-name">{{ brand.name }}</span>
+              </span>
+            </a>
+            {% endfor %}
+            {% for brand in brand_logos %}
+            <a class="brand-strip-tile" href="{{ brand.link }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+              <span class="brand-strip-img">
+                <img src="{{ brand.img }}" alt="" loading="lazy">
+              </span>
+              <span class="brand-strip-caption">
+                <span class="brand-strip-category">{{ brand.category_label }}</span>
+                <span class="brand-strip-name">{{ brand.name }}</span>
+              </span>
+            </a>
+            {% endfor %}
           </div>
         </div>
       </div>

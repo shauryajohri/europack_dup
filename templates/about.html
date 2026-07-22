@@ -3,12 +3,11 @@
 {% block meta_description %}EUROPACK Industrial Solutions S.A. — supplying, designing and supporting industrial production and packaging equipment in Greece since 1972.{% endblock %}
 {% block content %}
 <section class="company-hero-section pt-5 pb-100">
-  <div class="container-fluid one">
-    <div class="company-hero-media company-hero-media--lifted">
-      <img src="{{ url_for('static', filename='images/site/office-interior.png') }}" alt="Europack office">
-      <div class="company-hero-overlay">
-        <h1>The Company</h1>
-      </div>
+  <div class="company-hero-media company-hero-media--lifted company-hero-media--full">
+    <img src="{{ url_for('static', filename='images/site/office-interior.png') }}" alt="Europack office">
+    <div class="company-hero-watermark" aria-hidden="true">europack</div>
+    <div class="company-hero-overlay">
+      <h1>The Company</h1>
     </div>
   </div>
 </section>
@@ -19,7 +18,10 @@
       <div class="col-lg-12">
         <div class="logo-wrapper">
           <div class="logo-title">
-            <h6>Our Customers</h6>
+            <h6>
+              Our Customers
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4816 1.06282L1.29497 11.2495L0.543457 10.4979L10.4832 0.558135H1.44338V0.505811" fill="currentColor"></path></svg>
+            </h6>
           </div>
           <div class="logo-area">
             <div class="marquee_text2">
@@ -35,6 +37,25 @@
               {% endfor %}
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="company-founding-section mb-130">
+  <div class="container-fluid one pl--95">
+    <div class="row g-xl-4 gy-5 align-items-start">
+      <div class="col-lg-5">
+        <div class="company-founding-media">
+          <img class="img-fluid" src="{{ url_for('static', filename='images/site/company-budha.webp') }}" alt="The Europack team at an early trade exhibition">
+        </div>
+      </div>
+      <div class="col-lg-7 pr--95">
+        <div class="company-founding-copy">
+          <span class="company-founding-badge">Europack Industrial Solutions S.A.</span>
+          <h3>Supply, Design and Support of Industrial Production &amp; Packaging Equipment</h3>
+          <p>EUROPACK was founded in 1972. Its primary focus is representing international manufacturers of packaging and food processing machinery and equipment for other industries.</p>
         </div>
       </div>
     </div>

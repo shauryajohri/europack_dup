@@ -136,18 +136,24 @@
 
 .banner3-section:has(.swiper-slide:nth-child(2) .eg-card3:hover),
 .banner3-section:has(.swiper-slide:nth-child(2) .eg-card3:focus-within),
-.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3.is-active) {
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3.is-active),
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3:hover) #home3-banner-bg,
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3:focus-within) #home3-banner-bg,
+.banner3-section:has(.swiper-slide:nth-child(2) .eg-card3.is-active) #home3-banner-bg {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/static/images/site/hero-live-02.webp") !important;
+    url("/static/images/site/hero-02.webp") !important;
 }
 
 .banner3-section:has(.swiper-slide:nth-child(3) .eg-card3:hover),
 .banner3-section:has(.swiper-slide:nth-child(3) .eg-card3:focus-within),
-.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3.is-active) {
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3.is-active),
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3:hover) #home3-banner-bg,
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3:focus-within) #home3-banner-bg,
+.banner3-section:has(.swiper-slide:nth-child(3) .eg-card3.is-active) #home3-banner-bg {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/static/images/site/hero-live-03.webp") !important;
+    url("/static/images/site/hero-03.webp") !important;
 }
 
 /* Home "About Us" counters + image ------------------------------------------
@@ -187,13 +193,68 @@
    Soft directional shadow on the left/bottom of each card for depth, and the
    decorative corner graphic (spiral / dotted ring) swapped in for the old
    arrow icon. These are purely decorative — static, not links or buttons. */
+.solution-section {
+  position: relative;
+  background: #fdf1e8;
+  overflow: hidden;
+}
+
+.solution-section > .container-fluid > .row > [class*="col-lg-5"] {
+  position: relative;
+}
+
+.solution-section .section-title1.two {
+  position: relative;
+  z-index: 1;
+}
+
 .solution-section .eg-card-3 {
   box-shadow: -10px 10px 30px rgba(20, 20, 20, 0.07);
+  min-height: 268px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.solution-section .eg-card-3 .content h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.solution-section .eg-card-3 .content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .solution-section .eg-card-3 .sn-and-btn .decor-icon {
   color: currentColor;
   pointer-events: none;
   user-select: none;
+}
+
+/* Large faint "europack" watermark tucked behind the left column, matching
+   the live site's hero-style background type treatment. */
+.solution-watermark {
+  position: absolute;
+  left: -6px;
+  bottom: -18px;
+  z-index: 0;
+  font-size: clamp(90px, 11vw, 160px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 127, 31, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 991px) {
+  .solution-watermark {
+    display: none;
+  }
 }
 
 /* Agencies showcase ------------------------------------------------------- */
@@ -414,45 +475,67 @@
 /* Company page ------------------------------------------------------------ */
 .company-hero-section {
   background: #fff;
-}
-
-.logo-title h6 {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 20px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 999px;
-  font-size: 18px;
-  line-height: 1;
-  color: inherit;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .company-hero-media {
   position: relative;
   margin-top: -6px;
   background: #ededed;
+  overflow: hidden;
 }
 
 .company-hero-media--lifted {
   margin-top: -12px;
 }
 
+/* Break out of the theme's container gutters so the photo runs edge to
+   edge, flush with the navbar above it. */
+.company-hero-media--full {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
 .company-hero-media img {
   width: 100%;
-  height: 440px;
+  height: 480px;
   display: block;
   object-fit: cover;
   object-position: center;
 }
 
+.company-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.12) 45%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+}
+
+.company-hero-watermark {
+  position: absolute;
+  left: 34%;
+  bottom: -2%;
+  z-index: 1;
+  font-size: clamp(70px, 9vw, 150px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.28);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
 .company-hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 32px;
+  padding-left: 5%;
 }
 
 .company-hero-overlay h1 {
@@ -460,12 +543,15 @@
   font-size: 62px;
   line-height: 1;
   font-weight: 300;
-  color: #111;
+  color: #fff;
 }
 
+/* "Rotation banner": clean white strip housing the auto-scrolling customer
+   logos, with a plain "Our Customers" label + small arrow (no box), full
+   color logos, and a thin divider between the label and the logo row. */
 .logo-section .logo-wrapper {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: 200px minmax(0, 1fr);
   align-items: stretch;
   gap: 24px;
   padding: 18px 0;
@@ -478,11 +564,23 @@
   display: flex;
   align-items: center;
   padding-left: 22px;
+  border-right: 1px solid #ebebeb;
 }
 
 .logo-section .logo-title h6 {
-  border-color: rgba(0, 0, 0, 0.14);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
   color: #111;
+}
+
+.logo-section .logo-title h6 svg {
+  flex: 0 0 auto;
+  transform: rotate(45deg);
 }
 
 .logo-section .logo-area {
@@ -496,7 +594,7 @@
   align-items: center;
   gap: 56px;
   width: max-content;
-  animation: europack-marquee-left 48s linear infinite;
+  animation: europack-marquee-left 26s linear infinite;
   will-change: transform;
 }
 
@@ -510,8 +608,9 @@
 
 .logo-section .marquee_text2 img {
   display: block;
-  height: 72px;
+  height: 56px;
   width: auto;
+  max-width: 140px;
   object-fit: contain;
 }
 
@@ -521,6 +620,31 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1199px) {
+  .logo-section .logo-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-section .logo-title {
+    padding-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 14px;
+  }
+}
+
+@media (max-width: 991px) {
+  .company-hero-watermark {
+    left: 6%;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-section .marquee_text2 img {
+    height: 44px;
   }
 }
 
@@ -632,6 +756,61 @@
   font-size: 16px;
 }
 
+/* "EUROPACK was founded in 1972..." intro block, right below the customer
+   logo banner: historical photo on the left, outlined pill badge + small
+   heading + a large statement paragraph on the right. */
+.company-founding-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.company-founding-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 22px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.company-founding-copy h3 {
+  margin: 0 0 34px;
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #111;
+  max-width: 34rem;
+}
+
+.company-founding-copy p {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #111;
+  max-width: 48rem;
+}
+
+@media (max-width: 767px) {
+  .company-founding-copy h3 {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .company-founding-copy p {
+    font-size: 24px;
+  }
+}
+
 .company-stats-section .company-portrait img,
 .company-founders-media img {
   width: 100%;
@@ -723,22 +902,8 @@
     grid-template-columns: 1fr;
   }
 
-  .logo-section .logo-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  .logo-section .logo-title {
-    padding-left: 0;
-  }
-
   .company-hero-head h1 {
     font-size: 56px;
-  }
-}
-
-@media (max-width: 767px) {
-  .logo-section .marquee_text2 img {
-    height: 64px;
   }
 }
 
@@ -791,5 +956,204 @@
     width: 100%;
     white-space: normal;
     justify-content: space-between;
+  }
+}
+
+/* Services page — dark accordion section ----------------------------------
+   Matches the real europack.gr/en/services/ "Services" panel: dark
+   full-bleed section, a tall photo on the left, and a stack of collapsible
+   dark bars on the right with a diagonal orange arrow per item. */
+.services-dark-section {
+  background: #232323;
+  color: #fff;
+  padding: 110px 0;
+}
+
+.services-dark-img {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.services-dark-img img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.services-dark-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.services-dark-title {
+  margin: 0 0 34px;
+  font-size: 40px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.services-dark-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services-dark-item {
+  background: #2c2c2c;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.services-dark-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 28px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.services-dark-arrow {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff7f1f;
+  transform: rotate(90deg);
+  transition: transform 0.25s ease;
+}
+
+.services-dark-toggle[aria-expanded="true"] .services-dark-arrow {
+  transform: rotate(180deg);
+}
+
+.services-dark-collapse .services-dark-cont {
+  padding: 0 28px 28px;
+}
+
+.services-dark-collapse .services-dark-cont p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .services-dark-section {
+    padding: 70px 0;
+  }
+
+  .services-dark-title {
+    font-size: 30px;
+  }
+
+  .services-dark-toggle {
+    padding: 20px;
+    font-size: 14px;
+  }
+}
+
+/* Homepage "Agencies" logo strip -------------------------------------------
+   Equal-size, auto-rotating strip of brand logos in a fixed order. Each
+   logo sits in a uniform white card (object-fit: contain, so a wide watermark
+   logo and a square one end up the same visual size) with a two-line
+   bottom-left caption: category on top, brand name below. The track is
+   duplicated once in the template for a seamless scrolling loop. */
+.brand-strip-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+}
+
+.brand-strip-track {
+  display: flex;
+  align-items: stretch;
+  gap: 42px;
+  width: max-content;
+  will-change: transform;
+  transition: transform 0.7s ease;
+}
+
+.brand-strip-tile {
+  flex: 0 0 auto;
+  position: relative;
+  width: 480px;
+  height: 330px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  display: block;
+}
+
+.brand-strip-img {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 51px 45px 99px;
+}
+
+.brand-strip-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.brand-strip-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 21px 27px 24px;
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.86) 0%, rgba(20, 20, 20, 0.0) 100%);
+}
+
+.brand-strip-category {
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.brand-strip-name {
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .brand-strip-tile {
+    width: 360px;
+    height: 252px;
+  }
+
+  .brand-strip-img {
+    padding: 33px 30px 78px;
+  }
+
+  .brand-strip-name {
+    font-size: 22px;
   }
 }

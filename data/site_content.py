@@ -133,6 +133,41 @@ def brands_by_category(category):
     return [b for b in BRANDS if category in b["categories"]]
 
 
+_BRANDS_BY_SLUG = {b["slug"]: b for b in BRANDS}
+
+# Exact rotation order requested for the homepage "Agencies" logo strip.
+BRAND_STRIP_ORDER = [
+    "ceia", "supura", "geyssel", "detectamet", "pharma-technology",
+    "glatt-group", "fette-compacting", "alu-sense", "colombini", "probat",
+    "endoline", "sollas", "volpak", "oli", "packline", "heat-and-control",
+    "econocorp", "claranor", "swiss-can-machinery", "stommpy", "ishida",
+    "all-fill", "ceia-2", "tecma-aries", "mpac", "ima-ilapak",
+]
+
+
+def brand_logo_strip():
+    """Build the ordered, equal-size logo strip for the homepage.
+
+    Each entry carries the brand name (bottom label) and its primary
+    category label (top label) alongside the image/link already defined
+    in BRANDS, in the exact rotation order requested.
+    """
+    strip = []
+    for slug in BRAND_STRIP_ORDER:
+        brand = _BRANDS_BY_SLUG.get(slug)
+        if not brand:
+            continue
+        primary_category = brand["categories"][0] if brand["categories"] else None
+        strip.append({
+            "name": brand["name"],
+            "slug": brand["slug"],
+            "img": brand["img"],
+            "link": brand["link"],
+            "category_label": CATEGORY_LABELS.get(primary_category, "Agencies"),
+        })
+    return strip
+
+
 TEAM = [
     {"name": "Alexandros Paraskevaidis", "role": "Company CEO", "email": "a.paraskevaidis@europack.gr"},
     {"name": "Giannis Christopoulos", "role": "Sales Engineer", "email": "i.christopoulos@europack.gr"},

@@ -6,6 +6,7 @@ from data.site_content import (
     CONTACT_DIRECTORY,
     PARTNERS,
     TEAM,
+    brand_logo_strip,
     brands_by_category,
 )
 from forms.contact_form import ContactForm
@@ -30,7 +31,11 @@ def _local_brands(brand_list):
 def index():
     """Render the homepage with hero, stats, services, brands, CTA."""
     newsletter_form = NewsletterForm()
-    return render_template("index.html", newsletter_form=newsletter_form, brands=_local_brands(BRANDS[:14]))
+    return render_template(
+        "index.html",
+        newsletter_form=newsletter_form,
+        brand_logos=brand_logo_strip(),
+    )
 
 
 GALLERY_IMAGES = [
