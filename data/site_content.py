@@ -128,6 +128,47 @@ for _b in BRANDS:
     _b["iso"] = " ".join(CATEGORY_ISOTOPE[c] for c in _b["categories"] if c in CATEGORY_ISOTOPE)
 
 
+# Real product-photo thumbnails used on the live "Αντιπροσωπείες" archive pages
+# (europack.gr agency category listings). These differ from the local brand
+# LOGOS in static/images/brands/ — the archive grid shows equipment photos.
+# Hotlinked to the client's own WordPress media library so they display exactly
+# like the live site without any local download.
+_ARCHIVE_THUMB_BASE = "https://europack.gr/wp-content/uploads/"
+ARCHIVE_THUMBS = {
+    "all-fill": "2025/06/thumbnail_all_fill-1.webp",
+    "alu-sense": "2025/07/banner-5.png",
+    "ceia": "2025/06/thumbnail_ceia.webp",
+    "ceia-2": "2025/08/bk011-6.jpg",
+    "claranor": "2025/07/claranor-cup-sterilization-unit-300-dpi1-1200x675-1-e1753960926204.png",
+    "colombini": "2025/07/MAC3_degassing_2024_02-scaled.jpg",
+    "detectamet": "2025/07/metal-detectable-stationery-e1753960854827.png",
+    "econocorp": "2025/07/Econocorp.png",
+    "endoline": "2025/07/Endoline.png",
+    "fette-compacting": "2025/07/Fette-Compacting.png",
+    "geyssel": "2025/07/applikator-457.jpg",
+    "glatt-group": "2025/07/Granulation-line-scaled.jpg",
+    "heat-and-control": "2025/07/conveying_index.jpg",
+    "ima-ilapak": "2025/06/FVFSK25_0001_VEGATRONIC-6000-DZ_Generale-_I23.jpg",
+    "ishida": "2025/06/thumbnail_ishida.webp",
+    "mpac": "2025/06/Cartoning-Maestro-c-hero.jpg",
+    "oli": "2025/07/kartonverpackung_-1-e1753880388360.jpg",
+    "packline": "2025/07/hummus_pxm.jpg",
+    "pharma-technology": "2025/07/Pharma-Technolgy.png",
+    "probat": "2025/07/Probat.png",
+    "sig-group": "2025/06/thumbnail_sig_group.webp",
+    "sollas": "2025/07/Sollas.png",
+    "supura": "2025/07/Supura.png",
+    "swiss-can-machinery": "2025/07/lead.jpg",
+    "tecma-aries": "2025/06/thumbnail_tecma_aries.webp",
+    "volpak": "2025/07/2522-2522.jpg",
+    "stommpy": "2025/06/thumbnail_stommpy.webp",
+}
+
+for _b in BRANDS:
+    _thumb = ARCHIVE_THUMBS.get(_b["slug"])
+    _b["archive_img"] = (_ARCHIVE_THUMB_BASE + _thumb) if _thumb else _b["img"]
+
+
 def brands_by_category(category):
     """Return brand dicts tagged with the given category."""
     return [b for b in BRANDS if category in b["categories"]]
@@ -135,35 +176,46 @@ def brands_by_category(category):
 
 _BRANDS_BY_SLUG = {b["slug"]: b for b in BRANDS}
 
-# Exact rotation order requested for the homepage "Agencies" logo strip.
+# Exact card order used by the live homepage "Αντιπροσωπείες / Reliable
+# quality!" agencies section (europack.gr/en/), which shows product photos
+# (not logos) with an arrow, the agency category label, and the brand name.
 BRAND_STRIP_ORDER = [
-    "ceia", "supura", "geyssel", "detectamet", "pharma-technology",
+    "ceia-2", "supura", "geyssel", "detectamet", "pharma-technology",
     "glatt-group", "fette-compacting", "alu-sense", "colombini", "probat",
     "endoline", "sollas", "volpak", "oli", "packline", "heat-and-control",
     "econocorp", "claranor", "swiss-can-machinery", "stommpy", "ishida",
-    "all-fill", "ceia-2", "tecma-aries", "mpac", "ima-ilapak",
+    "all-fill", "ceia", "tecma-aries", "mpac", "ima-ilapak", "sig-group",
 ]
+
+# On the homepage cards the label is the AGENCY category (not the industry
+# sub-category), matching the live site: "Product Manufacturing and Packaging",
+# "Quality control", or "Supply Chain".
+AGENCY_CAT_LABELS = {
+    "manufacturing": "Product Manufacturing and Packaging",
+    "quality": "Quality control",
+    "supply": "Supply Chain",
+}
 
 
 def brand_logo_strip():
-    """Build the ordered, equal-size logo strip for the homepage.
+    """Build the ordered homepage agencies cards, same as the live site.
 
-    Each entry carries the brand name (bottom label) and its primary
-    category label (top label) alongside the image/link already defined
-    in BRANDS, in the exact rotation order requested.
+    Each entry carries the real product-photo thumbnail (archive_img), the
+    agency category label(s), and the brand name, in the live card order.
     """
     strip = []
     for slug in BRAND_STRIP_ORDER:
         brand = _BRANDS_BY_SLUG.get(slug)
         if not brand:
             continue
-        primary_category = brand["categories"][0] if brand["categories"] else None
+        agency = [AGENCY_CAT_LABELS[c] for c in brand["categories"] if c in AGENCY_CAT_LABELS]
+        label = "  ".join(agency) if agency else "Agencies"
         strip.append({
             "name": brand["name"],
             "slug": brand["slug"],
-            "img": brand["img"],
+            "img": brand.get("archive_img") or brand["img"],
             "link": brand["link"],
-            "category_label": CATEGORY_LABELS.get(primary_category, "Agencies"),
+            "category_label": label,
         })
     return strip
 

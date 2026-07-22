@@ -46,7 +46,7 @@
         <div class="eg-card4">
           <div class="card-img">
             <a href="{{ brand.local_link }}">
-              <img src="{{ brand.img }}" alt="Europack News Image - {{ loop.index }}">
+              <img src="{{ brand.archive_img or brand.img }}" alt="Europack News Image - {{ loop.index }}">
             </a>
           </div>
           <div class="card-content">

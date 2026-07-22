@@ -1,4 +1,4 @@
-<div class="breadcrumb-section position-relative">
+<div class="breadcrumb-section position-relative{% if banner_image %} has-banner-image{% endif %}"{% if banner_image %} style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{ banner_image }}');"{% endif %}>
   <div class="company-name">europack</div>
   <div class="container-fluid one pl--95 position-relative z-1">
     <div class="row">

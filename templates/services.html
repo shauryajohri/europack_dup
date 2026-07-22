@@ -2,7 +2,7 @@
 {% block title %}Services | {{ config.SITE_NAME }}{% endblock %}
 {% block meta_description %}Explore Europack's services: design and engineering assessment, spare parts and technical support, periodic inspection and maintenance, and innovation and upgrades.{% endblock %}
 {% block content %}
-{% with page_title = "Services" %}{% include "components/breadcrumb.html" %}{% endwith %}
+{% with page_title = "Services", banner_image = "https://europack.gr/wp-content/uploads/2025/09/DSC_03531-scaled.webp" %}{% include "components/breadcrumb.html" %}{% endwith %}
 
 <section class="service-details-wrapper pt-130 mb-130">
   <div class="container-fluid one pl--95">
@@ -33,7 +33,7 @@
         </div>
         <div class="col-lg-5 d-flex align-items-end">
           <div class="advantage-img">
-            <img class="img-fluid" src="{{ url_for('static', filename='images/site/xray-inspection.png') }}" alt="Europack inspection equipment">
+            <img class="img-fluid" src="https://europack.gr/wp-content/uploads/2025/06/image_1.webp" alt="Europack inspection equipment">
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
     <div class="row g-lg-5 gy-5 align-items-stretch">
       <div class="col-lg-4 d-lg-flex d-none">
         <div class="services-dark-img">
-          <img class="img-fluid" src="{{ url_for('static', filename='images/site/portable-metal-detector.jpg') }}" alt="Europack technician performing equipment maintenance">
+          <img class="img-fluid" src="https://europack.gr/wp-content/uploads/2025/06/div_col_lg_3_margin.webp" alt="Europack technician performing equipment maintenance">
         </div>
       </div>
       <div class="col-lg-8">

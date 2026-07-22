@@ -472,6 +472,61 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
+/* Inner-page banner (Services / Agencies / News) --------------------------
+   The europack.gr inner pages open with a light "breadcrumb" banner: a big,
+   very faint "europack" watermark sitting behind the page title. These class
+   names are custom to our templates and had no styling, so the watermark was
+   rendering as solid black text with no layout. This restores the real look. */
+.breadcrumb-section {
+  position: relative;
+  overflow: hidden;
+  padding: 240px 0 170px;
+  min-height: 620px;
+  background: #000000;
+}
+/* When a page supplies a banner photo (set inline), cover the whole band with
+   it; the inline value already layers a dark overlay so white text stays
+   readable. Pages without a photo keep the solid black background above. */
+.breadcrumb-section.has-banner-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.breadcrumb-section .company-name {
+  position: absolute;
+  right: 3%;
+  bottom: -14px;
+  z-index: 0;
+  margin: 0;
+  font-size: clamp(90px, 15vw, 250px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.breadcrumb-section .banner-content {
+  position: relative;
+  z-index: 1;
+}
+.breadcrumb-section .banner-content h1 {
+  margin: 0;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: #ffffff;
+}
+@media (max-width: 767px) {
+  .breadcrumb-section {
+    padding: 150px 0 90px;
+    min-height: 420px;
+  }
+  .breadcrumb-section .company-name {
+    font-size: clamp(64px, 22vw, 120px);
+  }
+}
+
 /* Company page ------------------------------------------------------------ */
 .company-hero-section {
   background: #fff;
@@ -756,9 +811,10 @@
   font-size: 16px;
 }
 
-/* "EUROPACK was founded in 1972..." intro block, right below the customer
-   logo banner: historical photo on the left, outlined pill badge + small
-   heading + a large statement paragraph on the right. */
+/* "EUROPACK was founded in 1972..." intro block — the real europack.gr
+   Company page has this as its own section, directly above the "About Us"
+   dark band, each with a different photo. Outlined pill badge + small
+   heading + a large statement paragraph, photo on the left. */
 .company-founding-media img {
   width: 100%;
   height: auto;
@@ -811,15 +867,77 @@
   }
 }
 
-.company-stats-section .company-portrait img,
-.company-founders-media img {
+/* Company page — "About Us" dark/white band with a shared tall photo -------
+   Two full-bleed blocks stacked in normal flow (dark text block, then white
+   stats block) so their background colors span the full viewport width.
+   The photo is absolutely positioned against the shared wrapping section,
+   so its height naturally matches dark-block-height + white-block-height,
+   giving the illusion of one continuous image running down the right side
+   of both blocks. */
+.company-about-band {
+  position: relative;
+  overflow: hidden;
+}
+
+.company-about-dark {
+  background: #262626;
+  padding: 100px 0 64px;
+}
+
+.company-about-stats-wrap {
+  background: #fff;
+  padding: 46px 0;
+}
+
+.company-about-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 20px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.company-about-copy {
+  max-width: 640px;
+}
+
+.company-about-copy p {
+  margin: 0 0 26px;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #fff;
+}
+
+.company-about-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.company-about-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42%;
+  height: 100%;
+  z-index: 1;
+}
+
+.company-about-media img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .company-counter-row {
-  margin-top: 30px;
+  max-width: 640px;
 }
 
 .company-counter-row .counter-wrap {
@@ -832,7 +950,7 @@
 }
 
 .company-counter-row .single-counter {
-  flex: 1 1 220px;
+  flex: 1 1 180px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -846,7 +964,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #f5f5f5;
+  background: #fdf1e8;
+  color: #ff7f1f;
+  font-size: 22px;
 }
 
 .company-counter-row .number {
@@ -857,7 +977,7 @@
 
 .company-counter-row .number h2 {
   margin: 0;
-  font-size: 42px;
+  font-size: 38px;
   line-height: 1;
   color: #111;
 }
@@ -865,14 +985,72 @@
 .company-counter-row .content p {
   margin: 4px 0 0;
   color: #444;
+  font-size: 15px;
 }
 
-.company-founders-section {
-  background: #fff;
+@media (max-width: 991px) {
+  .company-about-media {
+    position: static;
+    width: 100%;
+    height: 320px;
+    margin-top: 40px;
+  }
+
+  .company-about-stats-wrap {
+    padding-bottom: 0;
+  }
+
+  .company-about-copy,
+  .company-counter-row {
+    max-width: none;
+  }
 }
 
-.company-founders-copy h2 {
-  font-size: 24px;
+@media (max-width: 767px) {
+  .company-about-dark {
+    padding: 60px 0 40px;
+  }
+
+  .company-about-copy p {
+    font-size: 22px;
+  }
+}
+
+/* Orange "history" band: the exhibition-era photo alongside the technical
+   support statement, replacing the old white founders section. */
+.company-history-section {
+  background: #ff7f1f;
+  padding: 90px 0;
+}
+
+.company-history-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.company-history-copy p {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #fff;
+}
+
+.company-history-copy p strong {
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .company-history-section {
+    padding: 56px 0;
+  }
+
+  .company-history-copy p {
+    font-size: 22px;
+  }
 }
 
 .team-section {
@@ -1105,14 +1283,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 51px 45px 99px;
 }
 
 .brand-strip-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
+}
+
+/* Circular arrow button, top-right — matches the live homepage agency cards. */
+.brand-strip-arrow {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ff7f1f;
+  transition: transform 0.3s ease;
+}
+.brand-strip-tile:hover .brand-strip-arrow {
+  transform: rotate(-45deg);
+}
+.brand-strip-arrow img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .brand-strip-caption {
@@ -1147,10 +1349,6 @@
   .brand-strip-tile {
     width: 360px;
     height: 252px;
-  }
-
-  .brand-strip-img {
-    padding: 33px 30px 78px;
   }
 
   .brand-strip-name {
