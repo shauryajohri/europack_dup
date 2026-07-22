@@ -1,4 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Mobile navigation: the hamburger button ships with no listener in the
+  // hotlinked theme JS (its expected markup doesn't line up with ours), so
+  // this wires it up directly — toggle the slide-down panel, tap-to-open the
+  // "Agencies" submenu, close on outside click / link click / resize to desktop.
+  const toggleBtn = document.querySelector("#navbarToggle");
+  const menuWrap = document.querySelector(".menu-wrap");
+
+  if (toggleBtn && menuWrap) {
+    const closeMenu = () => {
+      menuWrap.classList.remove("mobile-menu-open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+      menuWrap.querySelectorAll(".menu-item-has-children.sub-menu-open").forEach((item) => {
+        item.classList.remove("sub-menu-open");
+      });
+    };
+
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = menuWrap.classList.toggle("mobile-menu-open");
+      toggleBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    const dropdownToggle = menuWrap.querySelector(".menu-item-has-children > a.drop-down");
+    const dropdownParent = menuWrap.querySelector(".menu-item-has-children");
+    if (dropdownToggle && dropdownParent) {
+      dropdownToggle.addEventListener("click", (event) => {
+        if (window.innerWidth <= 991) {
+          event.preventDefault();
+          dropdownParent.classList.toggle("sub-menu-open");
+        }
+      });
+    }
+
+    menuWrap.querySelectorAll(".menu-logo a:not(.drop-down)").forEach((link) => {
+      link.addEventListener("click", () => closeMenu());
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth <= 991 && menuWrap.classList.contains("mobile-menu-open") && !menuWrap.contains(event.target) && event.target !== toggleBtn) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 991) closeMenu();
+    });
+  }
+
   const heroSection = document.querySelector(".banner3-section");
   const heroBg = document.querySelector("#home3-banner-bg");
   const heroCards = [...document.querySelectorAll(".banner3-section .eg-card3[data-hero-bg]")];

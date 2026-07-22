@@ -247,7 +247,10 @@ CONTACT_DIRECTORY = [
     {"department": "Sales", "name": "Giannis Christopoulos", "email": "i.christopoulos@europack.gr"},
     {"department": "Sales", "name": "Giorgos Flessas", "email": "g.flessas@europack.gr"},
     {"department": "Sales", "name": "Nikos Potiris", "email": "n.potiris@europack.gr"},
-    {"department": "Sales (Stommpy)", "name": "Akis Masouros", "email": "t.masouros@europack.gr"},
+    {"department": "Sales", "name": "Stommpy: Masouros Akis", "email": "t.masouros@europack.gr"},
+    # The live contact page has a "Marketing" heading with no listed contact
+    # under it yet — keep that structure so the page matches exactly.
+    {"department": "Marketing", "name": None, "email": None},
     {"department": "SIG Europack Service", "name": "Antonis Diamantopoulos", "email": "a.diamantopoulos@europack.gr"},
     {"department": "Technical Coordination", "name": "Vasilis Petrongonas", "email": "v.petrongonas@europack.gr"},
     {"department": "New Projects", "name": "Markos Tzivaridis", "email": "m.tzivaridis@europack.gr"},

@@ -27,6 +27,120 @@
 /* Error pages --------------------------------------------------------------*/
 .error-section { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0; }
 
+/* Mobile navigation --------------------------------------------------------
+   The hamburger button (#navbarToggle) has no matching JS/CSS in the
+   hotlinked theme bundle (its markup doesn't exactly match the original WP
+   template), so on narrow screens the menu button did nothing. This makes
+   the mobile menu fully self-contained: JS in site.js toggles a class here,
+   and this CSS turns the menu list into a full-width slide-down panel. */
+@media (max-width: 991px) {
+  .header-topbar-area .header-area {
+    flex-wrap: wrap;
+  }
+
+  .navbar-toggle-btn {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
+    padding: 4px 6px;
+    cursor: pointer;
+  }
+
+  .menu-wrap {
+    width: 100%;
+  }
+
+  .menu-logo {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background: #171717;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+  }
+
+  .menu-wrap.mobile-menu-open .menu-logo {
+    max-height: 80vh;
+    opacity: 1;
+    overflow-y: auto;
+  }
+
+  .menu-logo .menu-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 12px 24px 20px;
+  }
+
+  .menu-logo .menu-list > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-logo .menu-list > li > a,
+  .menu-logo .menu-list > li > a.drop-down {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 4px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .menu-item-has-children .dropdown-icon {
+    pointer-events: none;
+    transition: transform 0.2s ease;
+  }
+
+  .menu-item-has-children.sub-menu-open .dropdown-icon {
+    transform: rotate(45deg);
+  }
+
+  .sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 16px;
+    transition: max-height 0.25s ease;
+  }
+
+  .menu-item-has-children.sub-menu-open .sub-menu {
+    max-height: 320px;
+    padding-bottom: 8px;
+  }
+
+  .sub-menu li a {
+    display: block;
+    padding: 10px 4px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14.5px;
+  }
+
+  .mobile-menu-extra {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-header-language {
+    position: relative;
+    min-width: 0;
+    height: auto;
+    margin-right: 0;
+    padding: 10px 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile-menu-extra {
+    display: none;
+  }
+}
+
 /* Home hero ---------------------------------------------------------------
    WordPress sets this image through page-level generated CSS. The Flask page
    needs the same rule locally so the white header/cards sit over the machine
@@ -527,6 +641,76 @@
   }
 }
 
+/* Contact page — faint world-map graphic behind the "Area of Activity"
+   contact-form band at the bottom, matching the live site's use of
+   europack_contact_map_europe.webp as decorative background art there. */
+.contact-map-bg {
+  position: relative;
+  overflow: hidden;
+}
+.contact-map-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("https://europack.gr/wp-content/uploads/2025/07/europack_contact_map_europe.webp") center top / cover no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.contact-map-bg > .container-fluid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Consent checkbox under the message field, matching the live site.
+   The hotlinked theme styles every form input to full width / tall height,
+   which blew the checkbox up into a big square and squeezed the label into a
+   sliver (text wrapped one letter per line). These !important overrides pin
+   the checkbox to a real 18px box and let the label take the rest of the row. */
+.form-consent {
+  display: flex !important;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+.form-consent .form-consent-input[type="checkbox"] {
+  flex: 0 0 18px;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  top: 3px;
+  border: 1px solid #bbb !important;
+  border-radius: 3px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  accent-color: #ff7f1f;
+  appearance: auto !important;
+  -webkit-appearance: checkbox !important;
+  cursor: pointer;
+}
+.form-consent label {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 !important;
+  max-width: 640px;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #444;
+  cursor: pointer;
+  text-align: left;
+  white-space: normal;
+}
+
 /* Company page ------------------------------------------------------------ */
 .company-hero-section {
   background: #fff;
@@ -599,6 +783,26 @@
   line-height: 1;
   font-weight: 300;
   color: #fff;
+}
+
+@media (max-width: 1199px) {
+  .company-hero-overlay h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .company-hero-media img {
+    height: 320px;
+  }
+
+  .company-hero-overlay h1 {
+    font-size: 34px;
+  }
+
+  .company-hero-watermark {
+    font-size: clamp(50px, 18vw, 90px);
+  }
 }
 
 /* "Rotation banner": clean white strip housing the auto-scrolling customer
@@ -1079,17 +1283,9 @@
   .company-intro {
     grid-template-columns: 1fr;
   }
-
-  .company-hero-head h1 {
-    font-size: 56px;
-  }
 }
 
 @media (max-width: 767px) {
-  .company-hero-head h1 {
-    font-size: 42px;
-  }
-
   .company-intro h2,
   .company-story h2,
   .company-founders-copy h2 {

@@ -2,7 +2,7 @@
 {% block title %}Contact | {{ config.SITE_NAME }}{% endblock %}
 {% block meta_description %}Get in touch with Europack Industrial Solutions S.A. at 3 Vouliagmenis Ave, Glyfada, Athens, or call +30 210 9607102-3.{% endblock %}
 {% block content %}
-{% with page_title = "Contact" %}{% include "components/breadcrumb.html" %}{% endwith %}
+{% with page_title = "Contact", banner_image = "https://europack.gr/wp-content/uploads/2025/06/contact_top_background.webp" %}{% include "components/breadcrumb.html" %}{% endwith %}
 
 <div class="contact-page pt-130 pb-md-0 pb-5">
   <div class="container">
@@ -26,12 +26,14 @@
         <div class="single-location mb-50">
           <div class="title-and-view-btn"><h4>{{ department }}</h4></div>
           {% for person in people %}
-          <div class="py-4">
-            <h5 class="pb-3 mb-3">{{ person.name }}</h5>
-            <ul>
-              <li><i class="bi bi-envelope"></i> <a href="mailto:{{ person.email }}">{{ person.email }}</a></li>
-            </ul>
-          </div>
+            {% if person.name %}
+            <div class="py-4">
+              <h5 class="pb-3 mb-3">{{ person.name }}</h5>
+              <ul>
+                <li><i class="bi bi-envelope"></i> <a href="mailto:{{ person.email }}">{{ person.email }}</a></li>
+              </ul>
+            </div>
+            {% endif %}
           {% endfor %}
         </div>
         {% endfor %}
@@ -46,7 +48,7 @@
   </div>
 </div>
 
-<div class="contect-section6 pb-130">
+<div class="contect-section6 contact-map-bg pb-130">
   <div class="container-fluid one pl--95">
     <div class="row g-lg-4 gy-5">
       <div class="col-lg-5">
@@ -103,6 +105,12 @@
                     {{ form.message(class_="wpcf7-form-control wpcf7-textarea", rows=6, placeholder="Write us your message*") }}
                   </span>
                   {% for error in form.message.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-12 mb-30">
+                <div class="form-inner form-consent">
+                  {{ form.save_info(class_="form-consent-input") }}
+                  {{ form.save_info.label }}
                 </div>
               </div>
               <div class="col-lg-12">
